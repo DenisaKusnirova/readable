@@ -1,0 +1,155 @@
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* LISTHEDER COMPONENT */
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100vw;
+  border-bottom: solid 1px;
+  border-bottom-color: #f7f7f7;
+  position: fixed;
+  background-color: white
+}
+
+.menu-small {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  width: 100vw;
+  border-bottom: solid 1px;
+  border-bottom-color: #f7f7f7;
+  position: fixed;
+  background-color: white
+}
+
+.menu-padding {
+  padding: 20px;
+}
+
+.menu-padding-small {
+  padding: 8px;
+}
+
+.header {
+  font-size: 28px;
+}
+
+.header-small {
+  font-size: 22px;
+}
+
+/* POSTDETAIL COMPONENT */
+.card-content {
+  padding: 22px;
+  padding-top: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 36px;
+}
+
+.button-div {
+  padding-right: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 420px) {
+  .button-div {
+    padding-right: 10px;
+  }
+}
+
+h3 {
+  padding-top: 26px;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+h2 {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+
+.new-comment-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-header {
+  font-size: 20px;
+}
+
+/* HOMEPAGE COMPONENT */
+.posts-container {
+  margin: auto;
+  padding-top: 150px;
+  width: 600px;
+}
+
+@media only screen and (max-width: 620px) {
+  .posts-container {
+    padding-top: 120px;
+    width: 90%;
+  }
+}
+
+.individual-card {
+  margin-bottom: 30px;
+}
+
+/* CREATEPOST COMPONENT */
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 90%;
+  height: 30px;
+  margin-bottom: 20px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.error-message {
+  margin-bottom: 20px;
+  color: red;
+}
+
+/* CREATEPOST COMPONENT */
+.errorPage-msg {
+  padding: 20px;
+  font-size: 22px;
+}
+
