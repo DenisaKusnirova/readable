@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://ikvc.slovakrail.sk/iam/pages/auth/op.xhtml -->
+<html lang="sk" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        							
+        <script language="JavaScript" type="text/javascript">
+      //<![CDATA[	 
+        	 var callCount = 0;
+        
+             window.addEventListener("message", receiveMessage, false);
+			  function receiveMessage(e){
+				
+				var URL = "https://ikvc.slovakrail.sk/iam/checkstatus?"+ Math.random();
+				
+				var SESSION_STATE = "session-state";
+				var CHANGED = "changed";
+				var UNCHANGED = "unchanged";
+				var NOPROMPT = "noprompt";
+				
+				
+				if (callCount == 0) {
+					Get(URL);
+					callCount++;
+					//console.log("Check server");
+				}
+				
+				var cookie = getCookie(SESSION_STATE);
+				
+				
+				
+				var response = CHANGED;				
+				var localSessionState = e.data;	
+				
+				//console.log("Cookie: " + cookie);
+				//console.log("Local:  " + localSessionState);
+				
+				if (cookie == "" && localSessionState == "") {
+					response = UNCHANGED;
+				} else if (cookie == "" && localSessionState != "") {
+					var json_obj = JSON.parse(Get(URL));
+					if (localSessionState == json_obj[SESSION_STATE]) {
+						response = UNCHANGED;
+					} else {
+						response = CHANGED;
+					}
+				} else if (cookie != "" && localSessionState == "") {
+					response = NOPROMPT;
+				} else if (cookie != "" && localSessionState != "") {
+					response = UNCHANGED;
+					if (localSessionState == cookie) {
+						response = UNCHANGED;
+					} else {
+						response = CHANGED;
+					}					
+				}
+				
+				//console.log("State: " + response);
+				
+				e.source.postMessage(response, e.origin);
+				
+				function Get(checkstatusUrl){
+								
+					var Httpreq = new XMLHttpRequest();
+					Httpreq.open("GET",checkstatusUrl,false);
+					Httpreq.send(null);
+					return Httpreq.responseText;          
+				}	
+				
+				function getCookie(cookieName) {
+				    var name = cookieName + "=";
+				    var ca = document.cookie.split(';');
+				    for(var i=0; i < ca.length; i++) {
+				        var c = ca[i];
+				        while (c.charAt(0)==' ') c = c.substring(1);
+				        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+				    }
+				    return "";
+				} 
+
+			  };
+		
+			//]]>
+		</script>
+    </head>
+    <body>
+    
+</body></html>

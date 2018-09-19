@@ -1,0 +1,246 @@
+div.tmp-custom {
+  /* dropdowns on white board */
+}
+div.tmp-custom div.fancy-select {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+}
+div.tmp-custom div.fancy-select.disabled {
+  opacity: 0.5;
+}
+div.tmp-custom div.fancy-select select:focus + div.trigger {
+  /*box-shadow: 0 0 0 2px #4B5468;*/
+}
+div.tmp-custom div.fancy-select select:focus + div.trigger.open {
+  box-shadow: none;
+}
+div.tmp-custom div.fancy-select div.trigger {
+  border-radius: 0;
+  cursor: pointer;
+  padding: 10px 24px 9px 9px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  background: #fff;
+  border: 0 solid #c9c9c9;
+  /*border-top-color: #A5B2CB;*/
+  color: #333;
+  box-shadow: none;
+  width: 200px;
+
+}
+div.tmp-custom div.fancy-select div.trigger:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #6b6b6b;
+  top: 15px;
+  right: 9px;
+}
+div.tmp-custom div.fancy-select div.trigger.open {
+  background: #fff;
+  border: 0 solid #475062;
+  color: #333;
+  box-shadow: none;
+}
+div.tmp-custom div.fancy-select div.trigger.open:after {
+  /*border-top-color: #7A8498;*/
+}
+div.tmp-custom div.fancy-select ul.options {
+  list-style: none;
+  margin: 0;
+  position: absolute;
+  top: 40px;
+  left: 87px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 50;
+  max-height: 300px;
+  overflow: auto;
+  background: #f9f9f9;
+  border-radius: 0;
+  border-top: 0 solid #7DD8D2;
+  box-shadow: none;
+  min-width: 205px;
+  transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+}
+div.tmp-custom div.fancy-select ul.options.open {
+  visibility: visible;
+  top: 40px;
+  opacity: 1;
+  /* have to use a non-visibility transition to prevent this iOS issue (bug?): */
+  /*http://stackoverflow.com/questions/10736478/css-animation-visibility-visible-works-on-chrome-and-safari-but-not-on-ios*/
+  transition: opacity 300ms ease-out, top 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, top 300ms ease-out;
+}
+div.tmp-custom div.fancy-select ul.options.overflowing {
+  top: auto;
+  bottom: 40px;
+  transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+}
+div.tmp-custom div.fancy-select ul.options.overflowing.open {
+  top: auto;
+  bottom: 50px;
+  transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+}
+div.tmp-custom div.fancy-select ul.options li {
+  padding: 8px 12px;
+  color: #777878;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'open_sansregular';
+  transition: all 150ms ease-out;
+  -webkit-transition: all 150ms ease-out;
+  -moz-transition: all 150ms ease-out;
+  -ms-transition: all 150ms ease-out;
+  -o-transition: all 150ms ease-out;
+}
+div.tmp-custom div.fancy-select ul.options li.selected {
+  background: #f9f9f9;
+  color: #303030;
+  font-family: 'open_sansbold';
+}
+div.tmp-custom div.fancy-select ul.options li.hover {
+  color: #303030;
+}
+div.tmp-custom .tmp-white-block div.fancy-select {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+}
+div.tmp-custom .tmp-white-block div.fancy-select.disabled {
+  opacity: 0.5;
+}
+div.tmp-custom .tmp-white-block div.fancy-select select:focus + div.trigger.open {
+  box-shadow: none;
+}
+div.tmp-custom .tmp-white-block div.fancy-select div.trigger {
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0 9px 0 9px;
+  height: 40px;
+  line-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  background: none;
+  border: 1px solid #c9c9c9;
+  /*border-top-color: #A5B2CB;*/
+  color: #333;
+  box-shadow: none;
+  width: 200px;
+  transition: all 240ms ease-out;
+  -webkit-transition: all 240ms ease-out;
+  -moz-transition: all 240ms ease-out;
+  -ms-transition: all 240ms ease-out;
+  -o-transition: all 240ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select div.trigger:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #6b6b6b;
+  top: 15px;
+  right: 9px;
+}
+div.tmp-custom .tmp-white-block div.fancy-select div.trigger.open {
+  background: #fff;
+  border: 1px solid #333;
+  color: #333;
+  box-shadow: none;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options {
+  list-style: none;
+  margin: 0;
+  position: absolute;
+  top: auto;
+  left: auto;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 50;
+  max-height: 300px;
+  overflow: auto;
+  background: #f9f9f9;
+  border-radius: 0;
+  border-top: 0 solid #7DD8D2;
+  box-shadow: none;
+  min-width: 263px;
+  transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options.open {
+  visibility: visible;
+  top: 40px;
+  opacity: 1;
+  transition: opacity 300ms ease-out, top 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, top 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, top 300ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options.overflowing {
+  top: auto;
+  bottom: 40px;
+  transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options.overflowing.open {
+  top: auto;
+  bottom: 50px;
+  transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+  -o-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options li {
+  padding: 8px 12px;
+  color: #777878;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'open_sansregular';
+  transition: all 150ms ease-out;
+  -webkit-transition: all 150ms ease-out;
+  -moz-transition: all 150ms ease-out;
+  -ms-transition: all 150ms ease-out;
+  -o-transition: all 150ms ease-out;
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options li.selected {
+  background: #f9f9f9;
+  color: #303030;
+  font-family: 'open_sansbold';
+}
+div.tmp-custom .tmp-white-block div.fancy-select ul.options li.hover {
+  color: #303030;
+}
+/*# sourceMappingURL=plugins.css.map */

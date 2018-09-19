@@ -1,0 +1,623 @@
+$(function () {
+	//*** Inicialne skrytie detailov pre trasu ***
+	$('.detailed-list').hide();
+
+	//*** Prepinanie detailu pre trasu ***
+	$('.list-trigger-closed')
+		.click(function (event) {
+			var detailRouteList = $(this).parent().parent().parent().next('.detailed-list');
+			var autoHeightParentValue = detailRouteList.height();
+			var parentContainerHeightValue = $(this).closest('.tmp-train-list').height();
+
+			if ($(this).hasClass('list-trigger-closed')) {
+				$(this).removeClass('list-trigger-closed');
+				$(this).addClass('list-trigger-open');
+				$(this).text(getDetailSwitchLabel(1));
+				// Zvacsime parent container na y-osi
+				$(this).closest('.tmp-train-list').height(parentContainerHeightValue + autoHeightParentValue);
+				detailRouteList.show();	
+			} else {
+				$(this).removeClass('list-trigger-open');
+				$(this).addClass('list-trigger-closed');
+				$(this).text(getDetailSwitchLabel(0));
+				// Zmensime parent container na y-osi
+				$(this).closest('.tmp-train-list').height(parentContainerHeightValue - autoHeightParentValue);
+				detailRouteList.hide();	
+			}
+			
+			event.preventDefault();
+			event.stopPropagation();			
+	});
+	
+	
+	//*** Inicialne skrytie detailu pre nakupny kosik ***
+	$('.tmp-shopping-detail-data').hide();
+
+	//*** Prepinanie detailu pre nakupny kosik ***
+	$('.shoppingItemDetailTrigger')
+		.click(function (event) {
+			var trigger = $(this).closest('tr');
+			
+			if (trigger.hasClass('tmp-facelift-shopping-footer-inactive')) {
+				trigger.removeClass('tmp-facelift-shopping-footer-inactive');
+				trigger.addClass('tmp-facelift-shopping-footer-active');
+				$(this).text(getDetailSwitchLabel(1));
+			} else {
+				trigger.removeClass('tmp-facelift-shopping-footer-active');
+				trigger.addClass('tmp-facelift-shopping-footer-inactive');
+				$(this).text(getDetailSwitchLabel(0));
+			}
+
+			trigger.parent().parent().parent().children('.tmp-shopping-detail-data').toggle("slow");
+
+			event.preventDefault();
+			event.stopPropagation();			
+	});
+		
+	//*** Vybrat vsetko - dopravne prostriedky ***
+	$('#searchParamForm\\:selectAll').click(
+			function() {
+
+				$("#train-types :input").each(function(index) {
+					$(this).attr('checked', true);
+				});
+
+				$("#train-types label").each(function(index) {
+
+					$(this).addClass("tmp-chk");
+				});
+				
+				$("#train-types label[for='searchParamForm\\:deselectAll']").removeClass("tmp-chk");
+				$('#searchParamForm\\:deselectAll').attr("checked", false);
+
+			});
+
+	//*** Zrusit vyber - dopravne prostriedky ***
+	$('#searchParamForm\\:deselectAll').click(function() {
+
+		$("#train-types :input").each(function(index) {
+
+			$(this).attr("checked", false);
+		});
+
+		$("#train-types label").each(function(index) {
+
+			$(this).removeClass("tmp-chk");
+		});
+		
+		
+	});	
+	
+	
+
+
+		$('#train-types :input').click(
+			function() {
+
+				$("#train-types label[for='searchParamForm\\:deselectAll']").removeClass("tmp-chk");
+				$('#searchParamForm\\:deselectAll').attr("checked", false);
+
+				$("#train-types label[for='searchParamForm\\:selectAll']").removeClass("tmp-chk");
+				$('#searchParamForm\\:selectAll').attr("checked", false);
+
+			});
+});
+
+// Rozbalenie detailov listka pre vsetky polozky
+function initCollapseCartDetails() {
+	var trigger = $('.shoppingItemDetailTrigger').closest('tr');
+	trigger.removeClass('tmp-facelift-shopping-footer-inactive');
+	trigger.addClass('tmp-facelift-shopping-footer-active');
+	$('.shoppingItemDetailTrigger').text(getDetailSwitchLabel(1));
+	$('.tmp-shopping-detail-data').show();
+}
+
+//override funkcie zo script.js
+function ShowDetails(param, el) {
+    if (jQuery(el).hasClass("tmp-isActive")) {
+        jQuery(el).removeClass("tmp-isActive");
+        jQuery(el).parent().parent().next().next().next().children().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+    else {
+    	//deaktivovanie vsetkych ikon pre otvorenie informacii o cene pred tym nez aktivujem kliknutu
+    	if (param == "price") {
+    		$(".tmp-icon-euro").removeClass("tmp-isActive");
+    	}
+        jQuery(el).parent().children().each(function () {            
+        	$(this).removeClass("tmp-isActive");
+        });
+        jQuery(el).addClass("tmp-isActive");
+
+        //zatvorenie vsetkych informacii o cene pred tym nez otvorim kliknutu
+        if (param == "price") {
+        	$(".tmp-connection-infos").each(function() {
+        		if ($(this).data("info") == "price") {
+        			$(this).addClass("tmp-not-available");
+        		}
+        	})
+        }
+        
+        jQuery(el).parent().parent().next().next().next().children().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).removeClass("tmp-not-available");
+            }
+            else {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+}
+
+//zvolenie prvej trasy v BID po nacitani
+function selectFirstRoute() {
+	$('#addZoneParam\\:routeslist option:nth-child(2)').attr("selected", "selected");
+}
+
+function updateTooltipWraper() {	
+	$(".clickbtn").hover(
+	        function () {
+	            $(this).addClass('red').prev().css("display", "block").parent().addClass('tooltip-wraper');
+	        }, function () {
+	            $(this).removeClass("red").prev().css("display", "none");
+	        }
+	    );
+	}
+
+function discountSelectRedraw() {
+	$(".tmp-shopping-detail-discount :input").each(function(index) {
+		$(this).attr("checked", false);
+	});
+}
+
+function deselectRadio() {
+	$("#refreshRadio :input[type=radio]").each(function() {
+		$("label[for='" + $(this).attr('id') + "']").removeClass("tmp-chk");
+	});
+}
+
+function updateFancySelect() {
+	$(".tmp-drl").fancySelect();
+	$(".tmp-drl-passenger-type").fancySelect();
+	
+	 var htmlElement = document.querySelector("html");
+	    var langAttr = $(htmlElement).attr("lang"); 
+	    if(langAttr==''){
+	    	langAttr = 'sk';
+	    }
+	
+	$('#tmp-datetimepicker').datetimepicker({
+        format: 'D, d.m.Y H:i',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $date_field.val(selectedDay + ", " + date.dateFormat('d.m.Y'));
+            initDatex(); //inicializacia initSearch
+        },
+        onSelectTime: function (time, $input) {
+            $time_field.val(time.dateFormat('H:i'));
+        }
+    });
+    
+    //motorail obsluha datumovnika - tam
+    $("#tmp-datetimepicker-to-a").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day").text(selectedDay);
+            $(".tmp-day-to").text(selectedDay);            
+            $(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);
+            
+            if(dateObjBack <= dateObjTo){
+            	var incrementedDate = new Date(date.getFullYear(),date.getMonth(),date.getDate()+1);  
+            	var incrementedDay = getWeekDay(incrementedDate);
+            	            	
+            	$(".tmp-day-back").text(incrementedDay);
+            	$(".tmp-txt-back").val(incrementedDate.dateFormat('d.m.Y'));
+            }
+        }
+    });
+
+    //motorail obsluha datumovnika - tam
+    $("#tmp-datetimepicker-to-b").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day").text(selectedDay);
+            $(".tmp-day-to").text(selectedDay);            
+            $(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);
+            
+            if(dateObjBack <= dateObjTo){
+            	var incrementedDate = new Date(date.getFullYear(),date.getMonth(),date.getDate()+1);  
+            	var incrementedDay = getWeekDay(incrementedDate);
+            	            	
+            	$(".tmp-day-back").text(incrementedDay);
+            	$(".tmp-txt-back").val(incrementedDate.dateFormat('d.m.Y'));
+            }
+        }
+    });
+    
+    //motorail obsluha datumovnika - spat
+    $("#tmp-datetimepicker-back").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day-back").text(selectedDay);
+            $(".tmp-txt-back").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);            
+            
+            if(dateObjBack < dateObjTo){
+            	$(".tmp-day-to").text(selectedDay);
+            	$(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            }
+        }
+    });
+    
+    //datetimepicker pre initSearchPrice
+    $('#tmp-datetimepickerPrice').datetimepicker({
+        format: 'D, d.m.Y H:i',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+
+        	//aktualny datum
+        	var today = new Date();
+        	        	
+        	//resetneme hodiny
+        	date.setHours(0,0,0,0);
+        	today.setHours(0,0,0,0);
+
+        	//nedovoli nastavit historiu, neberieme do uvahy cas, lebo si ho nastavuje dtp
+        	if(date>=today) {
+	            var selectedDay = getWeekDay(date);
+	            $date_field.val(date.dateFormat('d.m.Y'));
+	            $day_field.text(selectedDay);
+	            initDatePrice(); //inicializacia kvoli initSearchPrice nastaveniu rozsahu
+        	}
+        }
+    });
+
+    $("#tmp-datepicker").datetimepicker({
+        timepicker: false,
+        format: 'D, d.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-txt-datepicker").val(selectedDay + ", " + date.dateFormat('d.m.Y'));
+            if ( $("#ticketParam\\:tripDate").length ) { $("#ticketParam\\:tripDate").click(); }
+        }
+    });
+}
+
+//Funkcia posunie focus na dalsi field po vybrani hodnoty zo zoznamu ponukanych stanic
+function goNextInput(input, event) {
+	if (event.keyCode == 13) {
+		var element = null;
+
+		switch (input.name) {
+		case "searchParam:fromInput":
+			element = document.getElementById("connectionParam:toInput");
+			break;
+		case "searchParam:toInput":
+			element = document.getElementById("connectionParam:viaInput");
+			break;
+		case "searchParam:viaInput":
+			element = document.getElementById("connectionParam:time");
+			break;
+		}
+
+		if (element != null) {
+			element.focus();
+		}
+		return;
+	}
+}
+
+//listener nahradza oncomplete pre f:ajax
+function listenerOnForm(data, arg, arg2, arg3) {
+    var status = data.status; 
+
+	switch (status) {
+        case "begin": 
+    		$('#ajaxProgress').show(); //zobraz preloader
+            break;
+
+        case "complete": 
+    		break;
+
+        case "success": 	
+        	if (arg=="radioButtonStyle") {
+        		radioButtonStyle();    //prekreslenie radio
+        	}
+        	if (arg == "collapseCartStyle") {
+        		updateCollapseCartDetails();
+        	}
+        	if (arg == "clearDirectInputs") {
+        		var placeInputSelector = $("#ticketParam\\:inputOptionsItem\\:" + arg2 + "\\:" + arg3 + "DirectPlaceInput");
+        		var wagonInputSelector = $("#ticketParam\\:inputOptionsItem\\:" + arg2 + "\\:" + arg3 + "DirectWagonInput");
+        		if (placeInputSelector.val() != 0) {
+        			placeInputSelector.val("0");
+        		}
+        		if (wagonInputSelector.val() != 0) {
+        			wagonInputSelector.val("0");
+        		}
+        	}
+        	
+        	updateFancySelect(); 	   //prekreslenie fancy
+        	updateTooltipWraper();
+        	discountSelectRedraw();		//zrusenie checked na discountovych checkboxoch
+        	
+    		$('#ajaxProgress').hide(); //skry preloader    		
+        	break;
+    }
+}
+
+function updateCollapseCartDetails() {
+	$(".tmp-shopping-ticket-reservation .tmp-all-connections tbody td:last-child").css("text-align", "right");
+	
+	//*** Prepinanie detailu pre nakupny kosik ***
+	$('.shoppingItemDetailTrigger')
+		.click(function (event) {
+			var trigger = $(this).closest('tr');
+			
+			if (trigger.hasClass('tmp-facelift-shopping-footer-inactive')) {
+				trigger.removeClass('tmp-facelift-shopping-footer-inactive');
+				trigger.addClass('tmp-facelift-shopping-footer-active');
+				$(this).text(getDetailSwitchLabel(1));
+			} else {
+				trigger.removeClass('tmp-facelift-shopping-footer-active');
+				trigger.addClass('tmp-facelift-shopping-footer-inactive');
+				$(this).text(getDetailSwitchLabel(0));
+			}
+
+			trigger.parent().parent().parent().children('.tmp-shopping-detail-data').toggle("slow");
+
+			event.preventDefault();
+			event.stopPropagation();			
+	});
+	
+	// Zobrazenie detailov kosika
+	initCollapseCartDetails();
+
+		var tooltips = $("[title]").tooltip({
+		position : {
+			my : "left top",
+			at : "right+5 top-5"
+		}
+	});
+}
+
+//listener pre f:ajax a informacne buttony pre ohandlovanie prekreslavania info o cene, trase, obsadenosti
+function listenerOnFormBoxes(data, arg, arg2) {
+    var status = data.status;
+
+	switch (status) {
+        case "begin":
+        	$('#ajaxProgress').show(); //zobraz preloader
+        	
+    		//pridanie preloader bar
+    		$("#ldr-bar").clone().prependTo("#row0-"+arg+" .tmp-connection-infos");
+            $("#row0-"+arg+" .tmp-connection-infos #ldr-bar").css("display", "block");
+            if (arg2 == "ic-background-color") {
+            	$("#row0-"+arg+" .tmp-connection-infos #ldr-bar").css("background-color", "#fff0e7");
+            } else {
+            	$("#row0-"+arg+" .tmp-connection-infos #ldr-bar").css("background-color", "#ffffff");
+            }
+            break;
+
+        case "complete": 
+    		break;
+
+        case "success": 	
+        	$('#ajaxProgress').hide(); //skry
+        	
+        	updateFancySelect(); 	   //prekreslenie fancy
+        	updateTooltipWraper();
+        	
+        	//odstranenie baru
+        	$("#row0-"+arg+" .tmp-connection-infos #ldr-bar").remove();
+        	break;
+    }
+}
+
+//obsluha increasex a decreasex a datumovniky pre initSearch.xhtml a searchParam.xhtml
+function initDatex() {
+	//datum od-do, dni od-do
+	$date_field = $(".tmp-date");
+    $day_field = $(".tmp-day");
+    
+    //rozparsujem aktualny datum
+    var strDate = $date_field.val();
+    var pom;
+    var pom_dt;
+    
+    if(strDate.indexOf(',') === -1) {
+    	pom_dt = strDate;
+    }
+    else {
+        pom = strDate.split(',');
+        pom_dt = pom[1];
+    }
+    
+	var pole = pom_dt.split('.');
+	currentDate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	
+	var currentDateFormatted = currentDate.getDate()+'.'+ parseInt(currentDate.getMonth()+1) +'.'+ currentDate.getFullYear();
+	
+	var currentDay = getWeekDay(currentDate);
+
+	//set Form
+	$date_field.val(currentDateFormatted);
+	$day_field.text(currentDay);
+}
+
+function increaseDatex(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	sdate.setDate(sdate.getDate() + 1);
+	var result = sdate.getDate()+'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+	var den = getWeekDay(sdate);
+	$($day_field).text(den);
+}
+
+function decreaseDatex(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	sdate.setDate(sdate.getDate() - 1);
+	var result = sdate.getDate() +'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+	var den = getWeekDay(sdate);
+	$($day_field).text(den);
+} 
+
+
+function ShowExt1(item) {
+    if (jQuery(item).hasClass('tmp-ext_close')) {
+        jQuery('#tmp-ext_block').slideDown("slow");
+        jQuery(item).removeClass('tmp-ext_close').addClass('tmp-ext_open');
+    }
+    else if (jQuery(item).hasClass('tmp-ext_open')) {
+        jQuery('#tmp-ext_block').slideUp("slow");
+        jQuery(item).removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+//obsluha increase a decrease a datumovniky pre initSearchPrice
+function initDatePrice(gap) {
+	if(typeof(gap)==='undefined') gap = 2;
+	//datum od-do, dni od-do
+	$date_field = $(".tmp-date.dateFrom");
+    $dateTo_field = $(".tmp-date.dateTo");
+    $day_field = $(".tmp-day.dateFrom");
+    $dayTo_field = $(".tmp-day.dateTo");  
+    
+    //rozparsujem aktualny datum
+    var pom = $date_field.val();
+	var pole = pom.split('.');
+	currentDate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	nextDate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]) + gap); //gap dva dni
+	
+	var currentDateFormatted = currentDate.getDate()+'.'+ parseInt(currentDate.getMonth()+1) +'.'+ currentDate.getFullYear();
+	var nextDateFormatted = nextDate.getDate()+'.'+ parseInt(nextDate.getMonth()+1) +'.'+ nextDate.getFullYear();
+	
+	var currentDay = getWeekDay(currentDate);
+	var nextDay = getWeekDay(nextDate);
+
+	//set Form
+	$date_field.val(currentDateFormatted);
+    $dateTo_field.val(nextDateFormatted);
+	$day_field.text(currentDay);
+    $dayTo_field.text(nextDay);      
+}
+
+function increaseDatePrice(param, gap) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	sdate.setDate(sdate.getDate() + gap);
+	var result = sdate.getDate()+'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+	var den = getWeekDay(sdate);
+	$(param).text(den);
+}
+
+function decreaseDatePrice(param, gap) {
+	//aktualny datum
+	var today = new Date();
+
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	
+	//<docasne>
+	if (param==".dateFrom" && sdate>today) {
+		sdate.setDate(sdate.getDate() - gap);
+	}
+
+	if (param==".dateTo") { 
+		today.setDate(today.getDate() + 2); // 2 je default gap
+		
+		if (sdate>today) {
+			sdate.setDate(sdate.getDate() - gap);
+		}
+	}
+	//</docasne>
+	
+	var result = sdate.getDate() +'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+	var den = getWeekDay(sdate);
+	$(param).text(den);
+}
+
+//funkcia pre nabindovanie CSS stylov a obsluhu placeholdera pre formulare initSearch, initSearchPrice a searchParam
+function bindHtmlPlaceholder (inputTarget, placeholderText) {
+	
+	$(inputTarget).attr("placeholder", placeholderText);
+	/*
+	 * Deprecated, ale je kompatibilne s browsermi bez HTML5
+	 * 
+		$(inputTarget)
+			.css({ "color": "#000000", "font-family":"open_sanssemibold"})
+			.focus(function () {
+				if ($(this).val()==placeholderText || $(this).val()=="") $(this).css({ "color": "#000000", "font-family":"open_sanssemibold"}).val(""); })	
+			.blur(function () { 
+				if ($(this).val()=="") $(this).val(placeholderText).css({ "color": "#CFBAAF", "font-family":"open_sansregular"})
+			});
+	
+		if ($(inputTarget).val()=="" || $(inputTarget).val()==placeholderText) $(inputTarget).val(placeholderText).css({ "color":"#CFBAAF", "font-family":"open_sansregular"});
+	*/	
+}
+
+//Inicializacia datumovnika pre CPCL - kvoli anglickemu prekladu
+function initDateCPCL() {
+
+	// Nacitam a rozparsujem text z datumovnika
+	var txtLongDate = $("#searchParam\\:tripDate").val();
+	var txtLongDateSplit = txtLongDate.split(',');
+	var txtDate = txtLongDateSplit[1];
+	var txtDateSplit = txtDate.split('.');
+	
+	// Vytvorim novy datum
+	var date = new Date(txtDateSplit[2],txtDateSplit[1]-1,txtDateSplit[0]);
+	var selectedDay = getWeekDay(date);
+	
+	// Nastavim formatovany text do datumovnika
+	$(".tmp-txt-datepicker").val(selectedDay + ", " + date.dateFormat('d.m.Y'));
+}

@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom'
 
 const ErrorPage = () => {
   return (
-    <div>
-      <p className="errorPage-msg">
-        Sorry, the page could not be found. <br/>
-        <Link to="/">
-        Go back to homepage.</Link>
-      </p>
+    <div className="errorPage-msg">
+      <p> Sorry, the page could not be found.</p>
+      <Link to="/">Go back to homepage.</Link>
     </div>
     )
 }

@@ -1,0 +1,195 @@
+jQuery(document).ready(function(){
+	if (jQuery.browser.msie && jQuery.browser.version < 8) {
+		
+	}
+	else
+	{
+		jQuery("#webticker").webTicker({travelocity: 0.03});
+	}
+	
+//	jQuery('#page').localScroll();
+	jQuery(".mm .sub em").each(function(){
+		jQuery(this).css("width",jQuery(this).parent().outerWidth()-1);
+	});
+	if(jQuery(".galeria .block a").length > 0)
+	{
+		jQuery(".galeria .block a").fancybox();
+	}
+	jQuery('#fl').click(function(){
+		jQuery('#detail_area').removeClass('minus').addClass('plus');
+		return false;
+	});
+	jQuery('#fn').click(function(){
+		jQuery('#detail_area').removeClass('plus').removeClass('minus');
+		return false;
+	});
+	jQuery('#fs').click(function(){
+		jQuery('#detail_area').removeClass('plus').addClass('minus');
+		return false;
+	});
+	jQuery('.input_box').click(function(el){
+		
+		if(jQuery('.input_box').hasClass('close'))
+		{
+			jQuery('.input_box').removeClass('close').addClass('open');
+			jQuery('.navi_list').slideDown("slow");
+		}
+		else
+		{
+			jQuery('.input_box').removeClass('open').addClass('close');
+			jQuery('.navi_list').slideUp("slow");
+		}
+		
+	});
+	
+	if(jQuery(".ponuka").size() && !jQuery(".a270").size())
+	{
+		if(jQuery(".btf").height()>jQuery(".ponuka").height())
+		{
+			jQuery(".ponuka .block").height(jQuery(".btf").height()-70);
+		}
+	}
+	
+	jQuery('#overlay .target').fancybox({
+            'type': 'inline',
+            'href': '#overlay-source',
+            'overlayColor': '#000000',
+            'overlayOpacity': 0.7,
+			'scrolling': 'no'
+        }).click();
+	
+});
+
+function ShowExt(item)
+{
+	if (jQuery(item).hasClass('ext_close')) 
+	{
+		jQuery('#ext_block').slideDown("slow");
+		jQuery(item).removeClass('ext_close').addClass('ext_open');	
+	} 
+	else if (jQuery(item).hasClass('ext_open')) 
+	{
+		jQuery('#ext_block').slideUp("slow");
+		jQuery(item).removeClass('ext_open').addClass('ext_close');
+	}
+	
+}
+
+function ShowOpenBlock(item, who)
+{
+	if (jQuery(who).hasClass('close')) 
+	{
+		jQuery(item).slideDown("slow");
+		jQuery(who).removeClass('close').addClass('open');	
+	} 
+	else if (jQuery(who).hasClass('open')) 
+	{
+		jQuery(item).slideUp("slow");
+		jQuery(who).removeClass('open').addClass('close');
+	}
+	else 
+	{
+		jQuery(item).slideDown("slow");
+		jQuery(who).removeClass('close').addClass('open');	
+	}
+	
+}
+
+jQuery( function () {
+	jQuery("a.soctip").tooltip({
+		track: true,
+		showURL: false,
+		bodyHandler: function () {
+			return jQuery(jQuery(this).attr("rel")).html(); 
+		},
+		left: -122,
+		top: -96
+	})
+});
+
+jQuery(function(){
+	jQuery('#detail_area .ponuka .block').slides({
+		container: '#container',
+		preload: true,
+		preloadImage: 'fileadmin/templates/images/loading.gif',
+		play: 4000,
+		pause: 1000,
+		hoverPause: true,
+		generatePagination: true
+	});
+});
+
+function increaseTime(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split(':');
+	if ((pole[0]>=23 && pole[1]>=30) || (pole[0]==24 ) )
+	{
+		result="0:00";
+	}
+	else if (pole[1]>=30)
+	{
+		result = (parseInt(pole[0])+1).toString()+':00';
+	}
+	else
+	{
+		result=(pole[0])+':30';
+	}
+	jQuery(param).val(result);
+}
+
+function decreaseTime(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split(':');
+	if (pole[0]<=0 && pole[1]<30)
+	{
+		result="0:00";
+	}
+	else if (pole[1]<=30 && pole[1]>0)
+	{
+		result=(pole[0])+':00';
+	}
+	else
+	{
+		result= (parseInt(pole[0])-1).toString()+':30';
+	}
+	jQuery(param).val(result);
+} 
+function increaseDate(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	sdate.setDate(sdate.getDate() + 1);
+	var result = sdate.getDate()+'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+}
+
+function decreaseDate(param) {
+	var pom=jQuery(param).attr("value");
+	var pole = pom.split('.');
+	sdate = new Date(parseInt(pole[2]),parseInt(pole[1])-1,parseInt(pole[0]));
+	sdate.setDate(sdate.getDate() - 1);
+	var result = sdate.getDate() +'.'+ parseInt(sdate.getMonth()+1) +'.'+ sdate.getFullYear();
+	jQuery(param).val(result);
+} 
+function increaseNum(param) {
+	var pom=jQuery(param).attr("value");
+	result=parseInt(pom) + 1;
+	jQuery(param).val(result);
+}
+
+function decreaseNum(param) {
+	var pom=jQuery(param).attr("value");
+	if (pom=='0')
+	{
+		result=0;
+	}
+	else
+	{
+		result=parseInt(pom) - 1;
+	}
+	jQuery(param).val(result);
+} 
+
+
+		
+		

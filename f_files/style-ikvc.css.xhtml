@@ -1,0 +1,1430 @@
+/* Novy nakupny kosik */
+div.tmp-custom #tmp-step-container #tabContainer {
+	color: black;
+	margin: 10px auto !important;
+	background-color: #E7ECF3 !important;
+}
+div.tmp-custom #tmp-step-container #tabContainer div {
+	display: inline-block;
+	border: none;
+	height: 40px;
+	margin: 10px 5px;
+	padding: 5px;
+	vertical-align: middle;
+	border: none;
+}
+div.tmp-custom #tmp-step-container #tabContainer div.step:first-child {
+	margin-left: 10px !important;
+}
+div.tmp-custom #tmp-step-container #tabContainer div.step {
+	float: left;
+	width: 160px;
+	font-weight: normal;
+	position: relative; /*aby sa clickable-step-overlap roztiahol na velkost tohto elementu*/
+}
+
+/*roztiahnutie spanu na klikatelnost celeho kroku nakupu v hlavicke*/
+.clickable-step-overlap {
+	position: absolute; 
+  	width: 100% !important;
+  	height: 100%;
+  	top: 0;
+  	left: 0;
+  	z-index: 1;
+}
+
+div.tmp-custom #tmp-step-container #tabContainer div.cart {
+	float: right;
+	width: auto;
+	background-color: #fff;
+	margin-right: 10px !important;
+	vertical-align: middle;
+}
+div.tmp-custom #tmp-step-container #tabContainer .inactive, 
+div.tmp-custom #tmp-step-container #tabContainer .inactive span a {
+	color: #7b7b7b !important;
+	background-color: #f8f8f8 !important;
+}
+div.tmp-custom #tmp-step-container #tabContainer .active, 
+div.tmp-custom #tmp-step-container #tabContainer .active span a {
+	background-color: #294797;
+	color: #fff;
+}
+div.tmp-custom #tmp-step-container #tabContainer .completed, 
+div.tmp-custom #tmp-step-container #tabContainer .completed span a {
+	color: #7b7b7b !important;
+	background-color: #f8f8f8 !important;
+}
+div.tmp-custom #tmp-step-container #tabContainer .inactive .number,
+div.tmp-custom #tmp-step-container #tabContainer .active .number,
+div.tmp-custom #tmp-step-container #tabContainer .completed .number {
+	border: none;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 30px;
+	width: 20px;
+	height: 35px;
+	float: left;
+	margin-left: 5px;
+}
+div.tmp-custom #tmp-step-container #tabContainer .completed .number {
+	background: url(/inet-sales-web/javax.faces.resource/mill/img/icon-ok.png.xhtml) no-repeat scroll left 9px rgba(0, 0, 0, 0); ;
+}
+div.tmp-custom #tmp-step-container #tabContainer .inactive span,
+div.tmp-custom #tmp-step-container #tabContainer .active span,	
+div.tmp-custom #tmp-step-container #tabContainer .completed span {
+	border: none;
+	float: right;
+	width: 130px;
+}
+div.tmp-custom #tmp-step-container #tabContainer div.cart span {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 40px;
+	font-weight: normal;
+	margin-left: 2px;
+}			
+div.tmp-custom #tmp-step-container #tabContainer div.cart span#cart-ico {
+	width: 15px;
+	height: 19px;
+	background: url(/inet-sales-web/javax.faces.resource/mill/img/icon-cart-empty.png.xhtml) no-repeat scroll left 3px rgba(0, 0, 0, 0); ;
+}			
+div.tmp-custom #tmp-step-container #tabContainer div.cart span#price {
+	font-weight: bold;
+	color: #E64C3D;
+}		
+			
+/* Fixnutie prekryvajuceho x-ka v info boxe pre info o cene */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-details td .tmp-connection-infos, div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-details td .tmp-connection-infos, 
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block table.tmp-all-connections tbody tr.tmp-details td .tmp-connection-infos, div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block table.tmp-all-connections tbody tr.tmp-details td .tmp-connection-infos {
+	padding-bottom: 30px !important;
+}
+
+/* Zobrazenie informacii o trase pre spojenie */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-item-line td .tmp-train-list table tr td a.list-trigger-open {
+    position: relative;
+    left: -16px;
+	display: block;
+	padding-left: 18px;
+	background: url(/inet-sales-web/javax.faces.resource/mill/img/icon-minus.png.xhtml) no-repeat scroll left 2px rgba(0, 0, 0, 0); 
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-item-line td .tmp-train-list table tr td a.list-trigger-closed {
+    position: relative;
+    left: -16px;
+	display: block;
+	padding-left: 18px;
+	background: url(/inet-sales-web/javax.faces.resource/mill/img/icon-plus.png.xhtml) no-repeat scroll left 2px rgba(0, 0, 0, 0); 
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-item-line td .tmp-train-list table tr td.facelifted-border-cell {
+	padding-left: 35px !important;
+    border-left: 2px solid #000 !important;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-item-line td .tmp-train-list table tr.no-border-row td {
+	border: none !important;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-item-line td .tmp-train-list table tr td.no-border-cell {
+	border: none !important;
+}
+
+/* Switch pre rozbalenie detailu kosika */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr.extendable-trigger-collapsed td a.extendable-trigger { display: block; background: url(/inet-sales-web/javax.faces.resource/mill/img/showdetail-arr.png.xhtml) no-repeat scroll left -185px rgba(0, 0, 0, 0); padding-left: 25px; }
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr.extendable-trigger-uncollapsed td a.extendable-trigger { display: block; background: url(/inet-sales-web/javax.faces.resource/mill/img/showdetail-arr.png.xhtml) no-repeat scroll left 5px rgba(0, 0, 0, 0); padding-left: 25px; }
+
+/* Korektna sirka buttonov pre rezervacie */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-seats .tmp-btn-basic,
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-seats .tmp-btn-active,
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-seats .tmp-btn-inactive {
+  width: 150px !important;	
+}
+
+/* Moznosti pre rezervacie */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-btn-inactive,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-btn-inactive,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-btn-inactive,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-btn-inactive,
+.price-info-btn-container .tmp-btn-inactive {
+  cursor: default;
+  float: left;
+  width: 96px;
+  margin-right: 2px;
+  display: inline-block;
+  min-width: 96px;
+  padding: 0;
+  line-height: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  font-family: 'open_sansregular';
+  outline: none;
+  text-decoration: none;
+  border: 0 none;
+  color: #cccccc;
+  background: #f9f9f9;
+}
+
+.price-info-btn-container .tmp-btn-active,
+.price-info-btn-container .tmp-btn-basic {
+	width: 96px !important;
+}
+
+.price-info-btn-class-container .tmp-btn-active,
+.price-info-btn-class-container .tmp-btn-basic {
+	width: auto !important;
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	min-width: 70px !important;
+}
+
+.price-info-btn-container a.tmp-btn-inactive:hover { 
+	color: #cccccc;
+}
+
+.price-info-wagon-type {
+	margin-left: 15px !important;
+}
+
+.price-info-class-label {
+	padding-right: 8px !important;
+}
+
+.price-info-class-sex-label {
+	float: none !important;
+	padding-left: 10px !important;
+}
+
+.mcd-btn-container .tmp-btn-inactive {
+	width: 192px !important;
+}
+
+
+/* Zvyraznenie ceny */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation table tbody tr .tmp-final-price,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation table tbody tr .tmp-final-price,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation table tbody tr .tmp-final-price,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation table tbody tr .tmp-final-price {
+  color: #f04e37;
+  font-weight: 700;
+}
+
+/* Switch pre rozbalenie detailu kosika */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-facelift-shopping-footer-active td a.shoppingItemDetailTrigger { display: block; background: url(/inet-sales-web/javax.faces.resource/mill/img/showdetail-arr.png.xhtml) no-repeat scroll left -185px rgba(0, 0, 0, 0); padding-left: 25px; }
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-facelift-shopping-footer-inactive td a.shoppingItemDetailTrigger { display: block; background: url(/inet-sales-web/javax.faces.resource/mill/img/showdetail-arr.png.xhtml) no-repeat scroll left 5px rgba(0, 0, 0, 0); padding-left: 25px; }
+
+/* Footer pre vyber detailu v nakupnom kosiku */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-facelift-shopping-footer-active td { border-bottom: 1px solid #d5e0ee !important; border-top: none !important; }
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tbody tr.tmp-facelift-shopping-footer-inactive td { border: none !important; }
+
+/* Autocomplete station - rich:autocomplete - Dostane sa mimo tmp-custom preto nema prefix */
+span.rf-au {width: 294px; background-image: none; border-width: 0px; }
+span.rf-au span  {width: 155px; background-image: none; border-width: 0px; }
+span.rf-au input.rf-au-inp {width: 280px; padding: 5px; background-image:none; font-size: 16px; height: 30px; font-family: "open_sanssemibold"; }
+div.rf-au-lst-scrl {width: 294px; max-height: 250px; min-height: 250px; text-align: left; background-color:#FFF; font-size: 16px; position:absolute;}
+div.rf-au-itm {cursor: pointer; font-size: 0.9em; margin: 1px; padding: 1px;}
+div.rf-au-itm-sel {background-color:#317082; color:#FFF;}
+ 
+/* Carousel - uprava stylov posuvnika */
+div.tmp-custom .tmp-rs-carousel ul li { width:293px}
+
+/* ticket VCD rezervacie */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-wagon-type .tmp-other-options,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-wagon-type .tmp-other-options,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-wagon-type .tmp-other-options,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-all-connections tr td .tmp-wagon-type .tmp-other-options {
+  left: -25px;
+  position: relative;
+}
+
+/*styl pre rozsirene vyhladavanie inet-sales-web search.xhtml*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-search-block .tmp-advanced-search #tmp-ext_block .tmp-heading-lbl, #tmp-nosteps-container .tmp-connection-step .tmp-search-block .tmp-advanced-search #tmp-ext_block .tmp-heading-lbl, #tmp-step-container .tmp-single-page .tmp-search-block .tmp-advanced-search #tmp-ext_block .tmp-heading-lbl, #tmp-nosteps-container .tmp-single-page .tmp-search-block .tmp-advanced-search #tmp-ext_block .tmp-heading-lbl, #tmp-step-container .tmp-connection-step .tmp-search-block .tmp-advanced-search #tmp-ext-obl_block .tmp-heading-lbl, #tmp-nosteps-container .tmp-connection-step .tmp-search-block .tmp-advanced-search #tmp-ext-obl_block .tmp-heading-lbl, #tmp-step-container .tmp-single-page .tmp-search-block .tmp-advanced-search #tmp-ext-obl_block .tmp-heading-lbl, #tmp-nosteps-container .tmp-single-page .tmp-search-block .tmp-advanced-search #tmp-ext-obl_block .tmp-heading-lbl {
+    display: inline-block;
+	width: 80px;
+	padding-left: 10px;
+	margin-bottom: 3px;
+	font-size: 14px;
+}
+
+/*styl pre rozsirene vyhladavanie inet-sales-web search.xhtml*/
+div.tmp-custom .tmp-train-types tbody
+{
+	display: inline-block;
+	width: 350px;
+	margin-bottom: -10px;
+}
+/*styl pre rozsirene vyhladavanie inet-sales-web search.xhtml*/
+hr { 
+	display:block !important;
+}
+
+/*styl pre rozsirene vyhladavanie checkboxy prepravy inet-sales-web initSearchPrice.xhtml*/
+div.tmp-custom input.tmp-chbox[type="checkbox"] + label.tmp-chkb-lbl, input.tmp-chbox[type="checkbox"] + label.tmp-chkb-lbl.tmp-clr {
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    font-size: 14px;
+    vertical-align: middle;
+    cursor: pointer;
+    font-family: "open_sansregular";
+    color: #6B6B6B;
+}
+
+
+
+/* styl pre oblubeni cestujuci - popup */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block {
+  background: #f9f9f9;
+  margin-top: 3px;
+  z-index: 1000;
+  top: 75px;
+  padding: 0px;
+  width: 404px;
+  border: 1px solid #6b6b6b;
+  position: absolute;
+  -webkit-box-shadow: 0 0 5px #6b6b6b;
+  -moz-box-shadow: 0 0 5px #6b6b6b;
+  box-shadow: 0 0 5px #6b6b6b;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block .tmp-favorite-header,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block .tmp-favorite-header,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block .tmp-favorite-header,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block .tmp-favorite-header {
+  padding-top: 10px;
+  color: #6b6b6b;
+  font-family: "open_sanssemibold";
+  font-size: 1.15em;
+  position: absolute;
+  left: 10px;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table {
+  margin: 0;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr {
+  cursor: pointer !important;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td {
+  padding: 5px 0;
+  line-height: 1.2;
+  border: none;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:first-child,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:first-child,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:first-child,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:first-child {
+  padding-left: 10px;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:last-child,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:last-child,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:last-child,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr td:last-child {
+  padding-right: 10px;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr:hover,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr:hover,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr:hover,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block table.tmp-favorite-cest-table tbody tr:hover {
+  background: #e7edf4;
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block span.tmp-close,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block span.tmp-close,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block span.tmp-close,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-ext-obl-cest_block span.tmp-close {
+  color: transparent;
+}
+
+/* oblubene spojenia - popup */
+div.tmp-custom .tmp-journey-inputs #tmp-ext-obl_block {
+  background: #f9f9f9;
+  margin-top: 3px;
+  z-index: 1000;
+  top: 110px;
+  padding: 0px;
+  width: 390px;
+  border: 1px solid #6b6b6b;
+  position: absolute;
+  -webkit-box-shadow: 0 0 5px #6b6b6b;
+  -moz-box-shadow: 0 0 5px #6b6b6b;
+  box-shadow: 0 0 5px #6b6b6b;
+}
+div.tmp-custom .tmp-journey-inputs #tmp-ext-obl_block .tmp-favorite-header {
+  padding-top: 10px;
+  color: #6b6b6b;
+  font-family: "open_sanssemibold";
+  font-size: 1.15em;
+  position: absolute;
+  left: 10px;
+}
+div.tmp-custom .tmp-journey-inputs #tmp-ext-obl_block .tmp-heading-lbl {
+  float: left;
+}
+div.tmp-custom .tmp-journey-inputs #tmp-ext-obl_block .tmp-train-types {
+  float: left;
+  width: auto;
+}
+div.tmp-custom .tmp-journey-inputs #tmp-ext-obl_block .tmp-train-types label {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding-left: 22px;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table {
+  margin: 0;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table tbody tr {
+  cursor: pointer !important;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table tbody tr td {
+  padding: 5px 0;
+  line-height: 1.2;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table tbody tr td:first-child {
+  padding-left: 10px;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table tbody tr td:last-child {
+  padding-right: 10px;
+}
+div.tmp-custom .tmp-journey-inputs table.tmp-favorite-table tbody tr:hover {
+  background: #e7edf4;
+}
+/*styl pre detail vyhladanych spojeni, ktore obsahuju zastavky, cez ktore vlak nepojde*/
+div.tmp-custom .tmp-item-line2 td{
+	font-weight: normal !important;
+	border-bottom: 1px solid #D5E0EE !important;
+	padding: 8px 0px !important;
+}
+/* styl pre graficku rezervaciu */
+div.tmp-custom .wagon_wrapper { background: none repeat scroll 0 0 white; left: 0px; margin: 0; position: relative; width: 977px; z-index: 900; }
+div.tmp-custom .wagon_wrapper .caption { float: left; }
+div.tmp-custom .wagon_wrapper .clear-selected-seats { float:right; }
+div.tmp-custom .wagon_wrapper .selected-seats { float: left; }
+div.tmp-custom .wagon_wrapper .selected-seats-remaining { display:block; float:left; clear:both; margin: 0; pading: 0;height:20px; }
+div.tmp-custom .wagon_wrapper span { display: block; margin-left: 15px; margin-top: 20px; }
+div.tmp-custom .wagon_wrapper .selected-seats-status span { display: inline; margin-left: 15px; font-weight: bold; }
+div.tmp-custom .wagon_wrapper div.guide { color: red; clear:both; margin: 0 0 30px 0; padding:0; text-align:center; }
+div.tmp-custom .wagon_wrapper fieldset {padding: 10px 20px 10px 20px; min-height: auto; background-image: none;}
+div.tmp-custom .wagon_wrapper fieldset label {display: block; overflow: hidden; cursor: pointer;}
+div.tmp-custom .wagon_wrapper fieldset label em {display: block; margin-left: 200px; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px; }
+div.tmp-custom .wagon_wrapper .cislo_vozna {display: block; font-size: 13px; text-align: center; font-weight: 200; height: 14px; line-height: 14px; margin-top: 15px; width: 925px; font-family: open_sansbold; }
+div.tmp-custom .wagon_wrapper .wagon-top {clear: both; display: block;  height: 4px; margin:0; }
+div.tmp-custom .wagon_wrapper .wagon-left {float:left; height: 151px; margin:0 0 0 10px; padding:0; }
+div.tmp-custom .wagon_wrapper .wagon-right {float:left; height: 151px; margin:0; padding:0; }
+div.tmp-custom .wagon_wrapper .wagon-bottom {float:none; clear:both; display: block; height: 1px; margin:0; }
+div.tmp-custom .wagon_wrapper .wagon-centre {position: relative; margin: 0; float:left; padding: 0 0 0 0; }
+div.tmp-custom .wagon_wrapper .wagon-centre img {display: block;}
+div.tmp-custom .wagon_wrapper .wagon-advert-up {margin-left: auto; margin-right: auto; display: block; }
+div.tmp-custom .wagon_wrapper .wagon-advert-down {margin-left: auto; margin-right: auto; display: block; clear: both;}
+div.tmp-custom .wagon_wrapper .selected-seats-status {display: block; margin: 20px 0 0 0 }
+div.tmp-custom .wagon_wrapper .selected-seats-status {display: block; margin: 20px 0 0 0 }
+
+div.tmp-custom .wagon_wrapper .graphic-reservation-info-header {
+	margin: 0; 
+	padding: 0; 
+	font-family: open_sansbold; 
+	font-size: 13px; 
+	font-weight: 200;
+}
+
+div.tmp-custom .wagon_wrapper .graphic-reservation-info {
+	margin:5px 10px 20px 15px;
+}
+
+div.tmp-custom .wagon_wrapper .graphic-reservation-info li {
+	padding: 0 0 5px 25px;
+}
+
+
+
+/* zobrazenie policok pre bankovy ucet ked nastane chyba v init-sales-reimb*/
+div.tmp-custom .tmp-prefix-account , .tmp-bank-code{
+	width: 100px !important;
+}
+
+/* pridanie padingu pre linky (sepkar, napiste nam, ...) */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-steps-content .tmp-heading span.tmp-additional-links,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-steps-content .tmp-heading span.tmp-additional-links,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-steps-content .tmp-heading span.tmp-additional-links,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-steps-content .tmp-heading span.tmp-additional-links {
+  float: right;
+  width: auto;
+  padding-bottom: 5px;
+}
+/* hlaska vo VCD aby dalo na cely riadok */
+div.tmp-custom .errorMsgSpecial {
+	margin:0px !important;
+	padding:0px !important;
+	
+}
+
+div.tmp-custom .reimbTable{
+	margin-top:7px !important;
+}
+div.tmp-custom .reimbP{
+	float:left !important;
+}
+/*  styl pre tlacidlo grafickej rezervacie */
+div.tmp-custom .tmp-btn-basic-graphic {
+	float:right !important;
+	margin-top :-30px !important;	
+	margin-right: 30px !important;
+}
+
+div.tmp-custom .voitureLbl{
+	float: left;
+	display: inline-block !important;
+}
+
+/* FIX width: 20% pre span v payment obchodnych podmienkach */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-payment .tmp-shopping-accept p.tmp-clr span.tmp-small-payment {
+  padding-left: 25px;
+  padding-top: 7px;
+  display: inline-block;
+  width: auto;
+}
+
+/* FIX fancy - cestujuci dropdown pre Cr a IE */
+div.tmp-custom .tmp-journey-passenger .tmp-passenger .tmp-passenger-type .fancy-select div.trigger {
+padding: 0;
+line-height: 38px;
+width: 184px;
+}
+/* skratenie autocomplete pre bid  */
+div.tmp-destination-ticket-zonovy span.rf-au input.rf-au-inp {
+	width:255px !important;
+}
+/* rovnaka sirka vo vcd pre radiobuttony  */
+.vcdTable td{
+	width:120px !important;	
+}
+.vcdradiobuttons {
+	margin:0px !important;	
+}
+
+/* placeholder pre neaktivne tlacidlo oblubenych tras */
+div.tmp-plchldr-fav {
+	background: 0 !important;
+}
+
+/* placeholder pre neaktivne tlacidlo oblubenych tras v searchParam / vypnutie kurzora */
+a.tmp-fvrt-plc {
+	cursor: default !important;
+}
+
+.tmp-btn-dwn {
+	padding-left:15px !important;
+	padding-right:15px !important;
+}
+
+#tooltip {
+  padding: 8px !important;
+  position: absolute !important;
+  z-index: 9999 !important;
+  max-width: 350px !important;
+  -webkit-box-shadow: 0 0 5px #aaa !important;
+  border-width: 2px !important;
+  font-weight: 500 !important;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+  border: 1px solid #dddddd !important;
+background: #ffffff !important;
+  font-family:  Helvetica,Arial,sans-serif !important;
+font-size: 15px !important;
+}
+
+table.tmp-custom label{
+	background-image: url(/inet-sales-web/javax.faces.resource/mill/img/cssradio.png.xhtml);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding-left: 25px;
+	padding-right: 15px;
+	height: 20px;
+	display: inline-block;
+	line-height: 20px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 14px;
+	vertical-align: middle;
+	cursor: pointer;
+	font-family: 'open_sansregular';
+	color: #6b6b6b;
+	font-size: 13px;
+	margin-top: 5px;
+}
+
+table.tmp-custom input{
+	position: absolute;
+	z-index: -1000;
+	left: -1000px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
+table.tmp-custom label.tmp-chk {
+	background-position: 0 -20px;
+	font-family: 'open_sanssemibold';
+	color: #303030;
+	font-weight: bold;
+}
+
+.depatureTime{
+	padding-right: 0px !important;
+}
+
+#initfooter {
+  margin: 30px auto;
+  width: 980px;
+  height: auto;
+  background: #fff;
+  color: #6b6b6b;
+  font-family: 'open_sansregular';
+  font-size: 13px;
+  text-align: left;
+}
+.tmp-traveler-bold {
+	font-weight : bold !important;
+	font-size:15px !important;
+}
+.tmp-align-left{
+float:left !important;	
+}
+
+/* styl pre zobrazovanie panelu novinky */
+div.tmp-custom .tmp-newscontainer-form-attention {
+  display: block;
+  padding: 13px 10px;
+  margin-bottom: 20px;
+  background-color: #F2F6FA;
+  border-bottom: 2px solid #e7edf4;
+  color: #777878;
+}
+
+div.tmp-custom .tmp-newscontainer-form-attention a:link, div.tmp-custom .tmp-newscontainer-form-attention a:hover, div.tmp-custom .tmp-newscontainer-form-attention a:visited {
+  color: #000;
+}
+
+/* styl pre customizaciu Jquery UI Spinner */
+div.tmp-custom .ui-widget input, div.tmp-custom .ui-widget select, div.tmp-custom .ui-widget textarea, div.tmp-custom .ui-widget button {
+	font-family: "open_sansbold";
+	font-size: 16px;
+}
+
+.tmp-resCar-traveller-firstName{
+	margin-right: 20px;
+	margin-left: 74px;
+	margin-bottom: 15px;
+}
+
+.tmp-resCar-traveller-lastName{
+	margin-left: 49px !important;
+}
+
+div.tmp-custom .ui-corner-all, div.tmp-custom .ui-corner-top, div.tmp-custom .ui-corner-bottom, div.tmp-custom .ui-corner-right, div.tmp-custom .ui-corner-left, div.tmp-custom .ui-corner-br {
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+div.tmp-custom .ui-spinner-input {
+border: 0;
+background: #fff;
+color: inherit;
+padding: 2px;
+margin: .2em 0;
+vertical-align: middle;
+margin-left: .4em;
+margin-right: 22px;
+width: 50px;
+height: 45px;
+}
+
+div.tmp-custom .ui-widget-content {
+	border: 1px solid #c9c9c9;
+	background-color: #fff;
+}
+
+div.tmp-custom .ui-icon {
+	color: #6B6B6B;
+	display: block;
+	text-indent: 0;
+	overflow: hidden;
+	background-repeat: no-repeat;
+}
+
+/* FIX pre chybove hlasky a orezavanie textov */
+div.tmp-custom .tmp-anulation-form-alert p.tmp-anulation-form-accept {
+  height: auto;
+  min-height: 22px;
+  background: url(/inet-sales-web/javax.faces.resource/mill/img/alert-message.png.xhtml) no-repeat scroll 0px center;
+}
+
+div.tmp-custom .tmp-anulation-form-alert-error p.tmp-anulation-form-false {
+  height: auto;
+  min-height: 22px;
+  background: url(/inet-sales-web/javax.faces.resource/mill/img/alert-message.png.xhtml) no-repeat scroll 0px center;
+}
+
+div.tmp-custom .tmp-anulation-form-alert-info p.tmp-anulation-form-info {
+  height: auto;
+  min-height: 22px;
+  background: url(/inet-sales-web/javax.faces.resource/mill/img/info-message.png.xhtml) no-repeat scroll 0px center;
+}
+
+/* shopCartItemPayment verride stylu pre zobrazenie hlasky */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections tfoot tr td#shopCartItemPaymentOverride { 
+	padding: 0; 
+	margin: 0; 
+	text-align: left; 
+}
+
+/* nadpis pre info */
+div.tmp-custom .tmp-anulation-form-alert-info p.tmp-anulation-form-info span.info-header {
+  font-size: 16px; 
+  display: block;
+  margin-bottom: 5px;  
+}
+
+/* styly pre uzivatelsky pop-up Millenium */
+#header .lang {
+	padding-top:4px;
+}
+
+.tmp-tooltip-account-contents {
+  top: -4px;
+}
+
+.clickbtn-account {
+	font-size:13px;
+}
+
+.clickbtn-account .tmp-tooltip-account-contents .tmp-connections-move {
+  margin-top: 20px !important;
+  float: left !important;
+}
+.clickbtn-account .tmp-tooltip-account-contents .tmp-connections-move .tmp-next-red {
+ display: inline-block !important;
+  width: 154px !important;
+  text-transform: uppercase !important;
+  margin: 0;
+  padding-left: 17px;
+  padding-right: 28px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #fff;
+  font-family: 'open_sanssemibold';
+  font-size: 16px;
+ }
+
+
+.tmp-error-message-wrap-id-card {
+	left: 6px;
+}
+ 
+/*trojstavovy chkbox fix*/	
+div.tmp-custom input[type=checkbox].tmp-chbox + label.tmp-chkb-lbl.tmp-clr.tmp-chkbox-disabled  {
+	cursor: default;
+	background-image: url(/inet-sales-web/javax.faces.resource/mill/img/csscheckboxdisabled.png.xhtml);
+}
+
+/*Price container overide*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel, div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel, div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel, div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel {
+width: 280px !important;
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel:first-child, div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel:first-child, div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel:first-child, div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-price-wrapper-discount .tmp-price-panel:first-child {
+width: 300px !important;
+}
+/*Prekryvanie vizualnych prvkov informacia o zlave a povinne polia*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-detail-discount .tooltip-wraper .tmp-tooltip-wrap-contents{
+z-index: 11;
+}
+
+/* FIX sirky labelu pre bezplatnu miestenku*/
+div.tmp-custom .tmp-passenger-type div.tmp-chkb-wrap label.tmp-chkb-lbl {
+	min-width:300px;
+}
+
+/*fix vertikalneho zarovnania poli id-karty pre rezervacie*/
+div.tmp-custom .cardid {
+	width: 140px !important;
+	padding: 0px 5px 0px 5px !important;
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-passenger-type .fancy-select, 
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-passenger-type .fancy-select, 
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-passenger-type .fancy-select, 
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-parameters-tickets .tmp-passenger-type .fancy-select {
+	margin: 0 !important;
+}
+
+/*stylovanie pre button v inet-sales-bid-web Pridat trasu*/
+div.tmp-clr .addRoute {
+  color: #ffffff !important;
+  background: #0045A1 !important;
+}
+
+/*stylovanie pre odstranenie pridanej zony*/
+a.imageForZone{
+  padding-right: 27px;
+  margin: 0;
+  display: inline-block;
+  height: 22px;
+  background: url(/inet-sales-web/javax.faces.resource/mill/img/missed-icon.png.xhtml) no-repeat scroll 0px 0px;
+  text-indent: -9999px;
+  line-height: 24px;
+}
+
+/*autovlak fix pre input datumovy form*/
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-txt-datepicker-to, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-txt-datepicker-to,
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-txt-datepicker-back, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-txt-datepicker-back
+{
+	width: 102px !important;
+}
+
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr .tmp-txt-default, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr .tmp-txt-default {
+	width: 102px !important;
+}
+
+/*autovlak fix pre input datumu*/
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr .tmp-day-wrap, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr .tmp-day-wrap {
+	width: 97px !important;
+}
+
+/*autovlak fix pre tlacidlo vyhladania spiatocnej cesty*/
+#searchReturnOnly .tmp-btn-search {
+	width: 420px;
+}
+
+/*autovlak fix pre vybraty podtab cesta tam, spat, tam/spat*/
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel1 .tmp-destination .tmp-switch-travel li.active a, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel1 .tmp-destination .tmp-switch-travel li.active a {
+	color: #fff;	
+}
+
+/*autovlak fix pre "vybrat tento spoj" tlacidlo*/
+div.tmp-custom .tmp-white-block a.tmp-btn-motorail-clear
+{
+	padding: 0 10px !important;
+	background-color: #e7edf4;
+}
+
+div.tmp-custom .tmp-white-block a.tmp-btn-motorail-selected
+{
+	padding: 0 10px !important;
+	background-color: #2361a7;
+	color: #fff;
+}
+
+/*autovlak fix pre tlacidlo "nakup dokladu"*/
+div.tmp-custom #tmp-step-container .tmp-white-block .tmp-connections-move .tmp-next-motorail, 
+div.tmp-custom #tmp-nosteps-container .tmp-white-block .tmp-connections-move .tmp-next-motorail {
+	padding-right: 6px !important;
+}
+
+/* natiahnutie detailov o listku v pripade personal data ic so surodencami*/
+div.ICwithSIB{
+	margin-right:60% !important;
+}
+div.ICwithSibFrame{
+	float:left;
+	width:50%;
+	margin-top:35px;
+	height: 400px;
+}
+
+.icCartTopFrame {
+  border-bottom: 0 !important;
+  margin-bottom: 0px !important;
+}
+ .icCartMiddleFrame {
+  border-top: 0 !important;	
+  border-bottom: 0 !important;
+  margin-bottom: 0px !important;
+}
+
+ .icCartBottomFrame {
+  border-top: 0 !important;
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation {
+	  border: 1px solid #d5e0ee;
+	  padding-bottom: 12px;
+      margin-bottom: 20px;
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-payment .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-payment .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-payment .tmp-shopping-ticket-reservation,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-payment .tmp-shopping-ticket-reservation {
+	border: 1px solid #d5e0ee;
+	  padding-bottom: 12px;
+      margin-bottom: 20px;
+}
+
+/* fix autovlak: pre cerveny button "pokracovat" */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-connections-move .tmp-btn-action, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-connections-move .tmp-btn-action {
+	width: auto !important;
+	background-position: 96% -21px !important;
+	padding-right: 5% !important;
+}
+
+
+/* pretazanie sirky tabov pre autovlak */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail #tmp-jqtabs.ui-tabs .ui-tabs-nav.ui-widget-header.tmp-steps li,
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail #tmp-jqtabs.ui-tabs .ui-tabs-nav.ui-widget-header.tmp-steps li {
+  width: 25% !important;
+}
+
+/* fix autovlak: doladenie zalamovania formu vo vyhladavacom paneli */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-search-block .tmp-search-panel2 .tmp-journey-datetime .tmp-clr
+{
+	width: 466px;
+}
+
+/* fixy pre motorail ticketMCD formular */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-info-driver label, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-info-driver label
+{
+/* 	padding-right: 16px !important; */
+}
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-select-type-pass .tmp-clr label, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-select-type-pass .tmp-clr label
+{
+/* 	padding-right: 6px !important; */
+}
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-ecv-height-car label:first-child, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-ecv-height-car label:first-child
+{
+/* 	padding-right: 76px !important; */
+}
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-ev-number, 
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block  .tmp-ev-number, 
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-ev-number, 
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-ev-number
+{
+/* 	width: 90px !important; */
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-height-train, 
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-height-train, 
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-height-train, 
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-height-train
+{
+	width: 64px !important;
+}
+
+/* fix pre inetSalesPrice pre odskocenie vyhladavania */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block table.tmp-all-connections, 
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block table.tmp-all-connections, 
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block table.tmp-all-connections, 
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block table.tmp-all-connections
+{
+	clear: both !important;	
+}
+
+/* fix autovlak: inputy v ticketMCD */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter *, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter * {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+/* fix autovlak: labely v ticketMCD */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter  label.tmp-info-lbl-ext-moto, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter label.tmp-info-lbl-ext-moto {
+	display: inline-block;
+	width: 180px !important;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+	margin-right: 2px !important;
+	margin-left: 10px !important;
+}
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter  label.tmp-info-lbl-ext-moto-flexi, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter label.tmp-info-lbl-ext-moto-flexi {
+	display: inline-block;
+	width: 110px !important;
+	padding-right: 10px !important;
+	padding-left: 0px !important;
+	margin-right: 2px !important;
+	margin-left: 35px !important;
+	vertical-align: middle;
+}
+
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-car-metal-roof, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .tmp-car-metal-roof
+{
+	padding-left: 192px !important;
+}
+
+/* fix autovlak ticketMCD: zarovnanie komboboxu podla ostatnych vstupov */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .motorail-pass-ext .tmp-clr .fancy-select .trigger, 
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .motorail-pass-ext .tmp-clr .fancy-select .trigger
+{
+	width: 180px !important;
+}
+
+/* fix autovlak: zarovnanie otvorenej ponuky pre kombobox typu vozidla */
+div.tmp-custom #tmp-step-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .motorail-pass-ext .tmp-clr .fancy-select .options,
+div.tmp-custom #tmp-nosteps-container.tmp-searches-motorail .tmp-white-block .tmp-car-parameter .motorail-pass-ext .tmp-clr .fancy-select .options
+{
+	min-width: 193px !important;
+}
+
+.i-reservation {
+	width: 800px !important;
+}
+
+.tmp-btn-add-car-reservation {
+	margin-top: -10px !important;
+}
+
+.tmp-btn-remove-car-reservation {
+	width: 210px !important;
+}
+
+.expres .fancy-select .trigger, .expres .fancy-select .options,
+.i-reservation .fancy-select .trigger, .i-reservation .fancy-select .options
+{
+	width: 150px !important;	
+}
+
+.expres .sex tr td,  {
+    width: 100px !important; 
+}
+
+/* fix pre zobrazenie kreditnych zliav na poslednom mieste zoznamu */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-detail-discount, div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-detail-discount, div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-detail-discount, div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-detail-discount {
+    padding: 5px 0px 0px 0px !important;
+    width: 480px;
+}
+
+/* fix pre hint pri combobox zlavach */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-detail-discount label, div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-detail-discount label, div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-detail-discount label, div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-detail-discount label {
+	padding-right: 0px;
+}
+
+/* Dissabled radio select label*/	
+div.tmp-custom input.tmp-radio[type="radio"] + label.tmp-radio-lbl.tmp-radio-disabled {
+	cursor: default;
+	color: #cacaca;
+}
+
+/* Tlacidlo pre zrychleny nakup */
+div.tmp-custom #tmp-step-container .tmp-white-block .tmp-connections-move .tmp-checkout,
+div.tmp-custom #tmp-nosteps-container .tmp-white-block .tmp-connections-move .tmp-checkout {
+  padding-left: 17px;
+  padding-right: 40px;
+  margin-right: 10px;
+  background: #f04e37 url(/inet-sales-web/javax.faces.resource/mill/img/move-arr-white-quick.png.xhtml) no-repeat 126px -21px;
+}
+
+.tmp-passenger-type {
+	margin-bottom: 0px !important;
+}
+
+#personalDataLogin {
+	text-decoration: underline;
+}
+
+#personalDataLogin:hover {
+	color: #f04e37;
+}
+
+
+/*klikacie tooltipy*/
+
+/*container obsahujuci inputy s osobnymi udajmi*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info {
+  width: 45% !important;
+}
+
+/*samotny input na osobnych udajoch (pre meno, priezvisko...)*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-clr input.tmp-txt-default,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-clr input.tmp-txt-default,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-clr input.tmp-txt-default,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-clr input.tmp-txt-default {
+  position: relative;
+  right: -20px;
+}
+
+/*div s labelom a inputom*/
+.tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .personal-data-input-container {
+	float: left;
+}
+
+/*kontajner obsahujuci label kombacu, kombac a tooltipom*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass {
+	width: 407px !important;
+}
+
+/*kombac na osobnych udajoch (Typ preukazu, Krajina)*/
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass .fancy-select .trigger,
+div.tmp-custom #tmp-nosteps-container .tmp-connection-step .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass .fancy-select .trigger,
+div.tmp-custom #tmp-step-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass .fancy-select .trigger,
+div.tmp-custom #tmp-nosteps-container .tmp-single-page .tmp-white-block .tmp-shopping-personal-data .tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-select-type-pass .fancy-select .trigger {
+	position: relative;
+	right: 22px;
+}
+
+.tmp-shopping-ticket-reservation .tmp-shopping-traveler-info .tmp-error-message-wrap {
+	left: 440px !important;
+}
+
+/*error message pre mail*/
+#personalData\3a payerItemsList\3a 0\3a block > p > span {
+	left: 386px !important;
+}
+
+/*div obalujuci napis "narok na bezplatnu miestenku" a tooltip*/
+.tmp-passenger-type .tmp-chkb-wrap-width {
+	width: 360px !important;
+}
+
+/*zjednocovanie tooltipov*/
+.tmp-shopping-traveler-info .tooltip-wraper,
+.tmp-shopping-accept .tooltip-wraper,
+.tmp-group-passenger-list .tooltip-wraper,
+.tmp-passenger-type .tooltip-wraper,
+.tmp-all-connections .tooltip-wraper,
+.tmp-group-passenger-wrap .tooltip-wraper {
+	display: inline-block !important;
+}
+
+.tmp-shopping-accept .tmp-clr .tooltip-wraper {
+	top: 10px;
+}
+
+.tmp-shopping-traveler-info .tooltip-wraper {
+	left: 8px;
+}
+
+.tmp-shopping-traveler-info .tmp-select-type-pass .tooltip-wraper {
+	width: 24px;
+	left: 271px;
+}
+
+.tmp-all-connections .mcd-tooltip-wraper .tooltip-wraper {
+	top: -5px;
+}
+
+.tmp-shopping-traveler-info .tmp-tooltip-wrap-contents,
+.tmp-shopping-accept .tmp-tooltip-wrap-contents,
+.tmp-group-passenger-list .tmp-tooltip-wrap-contents,
+.tmp-passenger-type .tmp-tooltip-wrap-contents,
+.tmp-all-connections .tmp-tooltip-wrap-contents,
+.tmp-group-passenger-wrap .tmp-tooltip-wrap-contents {
+	display: none;
+    background: none repeat scroll 0 0 #e7edf4;
+    min-width: 400px;
+    padding: 10px 10px 0px 10px;
+    position: absolute;
+    bottom: 50px;
+    left: -8px;
+    width: auto;
+    z-index: 9;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 2px;
+}
+
+.tmp-shopping-traveler-info .tmp-select-type-pass .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px;
+	bottom: 65px;
+}
+
+.tmp-shopping-accept .tmp-tooltip-wrap-contents span {
+	padding: 0 !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: normal !important;
+	font-size: 13px !important;
+}
+
+.tmp-group-passenger-list .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px;
+	bottom: 40px !important;
+}
+
+.tmp-shopping-accept .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px;
+	bottom: 70px !important;
+	left: -8px !important;
+}
+
+.tmp-shopping-traveler-info .tmp-tooltip-wrap-contents {
+	left: -384px;
+}
+
+.tmp-passenger-type .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px !important;
+	bottom: 38px;
+	left: -14px !important;
+}
+
+.tmp-group-passenger-wrap .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px !important;
+	bottom: 38px;
+	left: -14px !important;
+}
+
+.tmp-shopping-traveler-info .tmp-traveler-bold .tmp-tooltip-wrap-contents span {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.tmp-all-connections .tmp-tooltip-wrap-contents {
+	padding-bottom: 10px !important;
+	bottom: 38px !important
+}
+
+.tmp-shopping-traveler-info .tmp-tooltip-arrow-discount,
+.tmp-shopping-accept .tmp-tooltip-arrow-discount,
+.tmp-group-passenger-list .tmp-tooltip-arrow-discount,
+.tmp-passenger-type .tmp-tooltip-arrow-discount,
+.tmp-all-connections .tmp-tooltip-arrow-discount,
+.tmp-group-passenger-wrap .tmp-tooltip-arrow-discount {
+	background-image: url(/inet-sales-web/javax.faces.resource/mill/img/arrow-tootlip-discount.png.xhtml);
+    background-position: left 0 bottom 1px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 13px;
+    position: absolute;
+    width: 24px;
+}
+
+.tmp-shopping-accept .tmp-tooltip-arrow-discount {
+	left: 10px;
+	bottom: -13px;
+	padding: 0 !important;
+}
+
+.tmp-shopping-traveler-info .tmp-tooltip-arrow-discount {
+	right: 10px;
+	bottom: -13px;
+	padding: 0 !important;
+}
+
+.tmp-shopping-traveler-info .tmp-select-type-pass .tmp-tooltip-arrow-discount {
+	width: 24px !important;
+}
+
+.tmp-group-passenger-list .tmp-tooltip-arrow-discount {
+	left: 10px;
+	bottom: -13px !important;
+	padding: 0 !important;
+}
+
+.tmp-passenger-type .tmp-tooltip-arrow-discount {
+	left: 12px;
+	bottom: -13px;
+}
+
+.tmp-group-passenger-wrap .tmp-tooltip-arrow-discount {
+	left: 12px;
+	bottom: -13px;
+}
+
+.tmp-all-connections .tmp-tooltip-arrow-discount {
+	left: 10px;
+	bottom: -13px;
+}
+
+.tmp-shopping-traveler-info .tmp-help-tooltip-icon,
+.tmp-shopping-accept .tmp-help-tooltip-icon,
+.tmp-group-passenger-list .tmp-help-tooltip-icon,
+.tmp-passenger-type .tmp-help-tooltip-icon,
+.tmp-all-connections .tmp-help-tooltip-icon,
+.tmp-group-passenger-wrap .tmp-help-tooltip-icon {
+	background-image: url(/inet-sales-web/javax.faces.resource/mill/img/icon-help.png.xhtml);
+	background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block !important;
+    height: 20px;
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+    margin-left: 5px !important;
+    vertical-align: middle !important;
+    width: 20px;
+}
+
+.tmp-passenger-type .tmp-help-tooltip-icon {
+	margin-top: 5px !important;
+	margin-left: 1px !important;
+}
+
+.tmp-group-passenger-wrap .tmp-help-tooltip-icon {
+	margin-top: 5px !important;
+	margin-left: 1px !important;
+}
+
+/*skryvanie checkboxu miestenka zadarmo*/
+.nochkb-lbl {
+	user-select: none;
+	font-size: 14px !important;
+    vertical-align: middle !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px !important;
+    min-width: 245px;
+    font-family: 'open_sanssemibold' !important;
+    color: #303030;
+}
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets table.tmp-passenger-type tr td .tmp-chkb-wrap {
+	margin-left: 10px !important;
+}
+
+/*label checkboxu spiatocna cesta na MPS*/
+div.tmp-custom .tmp-passenger-type div.tmp-chkb-wrap label.tmp-chkb-lbl-return {
+	min-width: 105px !important;
+	padding-right: 5px !important;
+}
+
+.tmp-chkb-wrap-return {
+	width: 130px !important
+}
+
+/*tabulka s listkami v kosiku - bunka s tlacidlom na vymazanie dokladu z kosika*/
+.tmp-shopping-ticket-reservation table th:nth-child(2) {
+	min-width: 180px;
+}
+
+/*styly pre zoznam oblubenych cestujucich na personal data*/
+.favorite-column-left{ 
+	float: left; width: 50%; 
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
+
+.favorite-column-center {
+	display: inline-block;
+	width: 40%;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
+
+.favorite-column-right {
+	float: right;
+	width: 10%;
+	padding-top: 3px !important;
+}
+
+.favorite-container {
+	float: left;
+	width: 100%;
+}
+
+.defaultCursor {
+	cursor: default !important;
+}
+
+/*zobrazenie ikon sluzieb vo vlaku*/
+.note-icon-container {
+	float: left;
+	margin-top: -3px !important;
+	margin-left: 10px !important;
+}
+
+.tmp-train-list table tbody tr:nth-child(1) td strong.connection-segment-name {
+	float: left;
+}
+
+.note-icon-container .tooltip-wraper {
+	margin-left: -3px !important;
+}
+
+.note-icon-container .tmp-tooltip-arrow-discount {
+	display: none !important;
+}
+
+.note-icon-container .tmp-tooltip-wrap-contents {
+	bottom: 28px !important;
+	padding: 5px 5px 5px 5px !important;
+	left: -20px !important;
+	min-width: 200px !important;
+}
+
+/*zvyraznenie IC vlakov*/
+.ic-background-color {
+	background-color: #fff0e7 !important;
+}
+
+.ic-logo-container {
+	margin-top: 6px !important;
+}
+
+.ic-logo-text-container {
+	position: relative;
+	top: -23px !important;
+	left: 127px !important;
+	margin-bottom: -36px !important;
+}
+
+.info-icon-style {
+	vertical-align: bottom !important;
+}
+
+/* minimalna sirka bunky s info ikonami na vyhladanych spojeniach(info o trase, o cene, o obsadenosti) */
+.tmp-info-btns {
+	min-width: 154px;
+}
+
+/* Korektna sirka buttonov pre typ produktu */
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-all-connections .tmp-btn-product-type {
+
+  width: 150px !important;	
+  margin-right: 2px;
+}
+
+
+
+div.tmp-custom #tmp-step-container .tmp-connection-step .tmp-white-block .tmp-parameters-tickets .tmp-shopping-second-header {
+	
+	font-family: "open_sansbold" !important;
+	font-size: 16px !important;
+	margin-bottom: 30px;
+    margin-top: 20px;		
+}

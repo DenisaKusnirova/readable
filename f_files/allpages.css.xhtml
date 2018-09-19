@@ -1,0 +1,750 @@
+* {font-size: 100%; font-family: 'Open Sans', sans-serif;}
+body {width: 100%; margin: 0; padding: 0; text-align: center; background-color: #fff; font-size: 13px; color: #535454; font-family: 'Open Sans', sans-serif;}
+
+
+.hide {display: none;}
+.show {display: block;}
+
+a {color: #2361a7;}
+#page {width: 100%; background: #fff url(/inet-sales-web/javax.faces.resource/images/allpages/bg_page2.png.xhtml) no-repeat 50% 0; text-align: center;}
+#page.bg2 {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/bg_page2.png.xhtml);}
+#page.bg3 {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/bg_page3.png.xhtml);}
+#header, #content, #footer {position: relative;}
+.c {width: 980px; margin: 0 auto; text-align: left; position: relative;}
+a.viac {font-size: 13px; color: #2361a7 !important; padding-left: 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -515px;}
+
+#mill {
+  width: 980px;
+  height: auto;
+	
+	position: relative;
+
+	padding: 0px;
+	border: 0px none;
+	outline: 0px none;
+    
+    margin: 0px auto;
+    text-align: left;
+}
+
+
+#tooltip {position: absolute;	z-index: 3000; text-align: left;}
+#tooltip h3, #tooltip div { margin: 0; }
+
+#landing {display: none;}
+
+.pagination {height: 10px; padding: 5px 0;}
+.pagination li a {display: block; width: 10px !important; height: 10px !important; text-indent: -10000px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -18px -420px;}
+.pagination li.current a {background-position: 1px -420px;}
+.pagination li {float: left; padding: 0 3px; width: 10px; height: 10px; overflow: hidden;}
+
+#top_banner .ban {margin: 0 auto; width: 960px;}
+
+/* #log_form {width: 125px; position: absolute; top: 30px; right: 0; background-color: #c9dcf1; border: 1px solid #aac8e8; padding: 15px 1px 5px 1px; z-index: 20; display: none;} */
+/* #header .log_area:hover #log_form {display: block;} */
+/* #log_form fieldset {background-color: #bbd3ed; position: relative;} */
+/* #log_form fieldset label {display: block; overflow: hidden; padding-bottom: 12px;} */
+/* #log_form fieldset label span {display: block; float: left; width: 46px; line-height: 26px;} */
+/* #log_form fieldset label input {width: 124px; height: 15px; font-size: 12px;} */
+/* #log_form fieldset .input_submit {width: 94px; height: 30px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -760px; padding-bottom: 3px; color: #fff; font-size: 13px; font-weight: bold; display: block; margin: 0 0 10px 46px;} */
+/* #log_form a { height:26px; text-align: right; margin-right: 15px; padding-right: 15px; display: block; font-size: 13px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 100% 35%;} */
+/* #log_form fieldset em {position: absolute; top: -7px; left: 160px; display: block; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_pop.png.xhtml) no-repeat 0 0; width: 11px; height: 7px; } */
+
+.tickercontainer { /* the outer div with the black border */
+width: 940px; height: 25px; margin: 0; padding: 0; overflow: hidden;}
+.tickercontainer .mask { /* that serves as a mask. so you get a sort of padding both left and right */
+position: relative; top: 5px; height: 25px; /*width: 718px;*/ overflow: hidden;}
+ul.newsticker { /* that's your list */
+position: relative; /*left: 750px;*/ list-style-type: none; margin: 0; padding: 0;}
+ul.newsticker li { float: left; /* important: display inline gives incorrect results when you check for elem's width */
+margin: 0; padding-right: 15px; /*background: #fff;*/}
+
+
+#footer {clear: both; padding: 26px 0 10px 0; background: url(/inet-sales-web/javax.faces.resource/images/allpages/footer_bg.png.xhtml) no-repeat 50% 0;} 
+#footer .info_centrum {padding: 25px 0 30px 0; text-align: center; background: url(/inet-sales-web/javax.faces.resource/images/allpages/kontaktne_centrum_line.png.xhtml) no-repeat 50% 100%; font-size: 16px;}
+#footer .info_centrum .sep {padding: 0 8px; color: #e7e8e9;}
+#footer .info_centrum strong {padding-left: 30px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 5px -170px;}
+#footer .info_centrum em {color: #f04e37; font-style: normal;}
+#footer .copy {text-align: center; font-size: 12px; padding-top: 10px;}
+#footer .bmenu {text-align: center; font-size: 12px; padding-top: 20px;}
+#footer .bmenu span {padding: 0 5px; color: #e7e8e9;}
+#footer .soc {position: absolute; bottom: 96px; right: 20px;}
+#footer .soc img {padding: 2px;}
+#content {min-height: 500px;}
+
+.s_pop {border: 1px solid #d0d1d3; padding: 13px 11px 10px 11px; width: 225px; background-color: #fff;}
+.s_pop span {display: block; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_pop2.png.xhtml) no-repeat 0 0; width: 11px; height: 6px; position: relative; bottom: -16px; left: 105px;}
+.s_pop img {float: left; margin: 3px 10px 5px 0;}
+
+/* Home Page Kupa listka */
+.btf {float: left; width: 550px; margin-left: 20px; position: relative;}
+.btf h2 {text-align: center; height: 40px; line-height: 40px; font-size: 18px; color: #777878; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -370px;}
+.btf fieldset {padding: 20px 35px 0 35px; background-color: rgba(187, 211, 237, 0.75); background-position: 100% 100%; background-repeat: no-repeat; min-height: 341px;}
+.btf .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow571.png.xhtml) no-repeat 0 0; height: 12px; position: absolute; bottom: -7px; width: 571px; left: -10px;}
+
+.btf fieldset label {display: block; width: 480px; cursor: pointer; position: relative; height: 51px;}
+.btf fieldset label span {display: block;  float: left; width: 100px; line-height: 31px; font-size: 16px; font-weight: bold;}
+.btf fieldset label .input_text {width: 370px; padding: 5px; font-size: 16px; height: 20px; border-top: 1px solid #bcbfc5;}
+.btf fieldset label .input_select {width: 165px; padding: 2px; font-size: 14px; height: 32px; }
+.btf fieldset label .date {width: 170px; padding: 3px 5px; border-top: 1px solid #bcbfc5; height: 24px; background-color: #fff; overflow: hidden; float: left;}
+.btf fieldset label .btn_ud {float: right; width: 16px;}
+.btf fieldset label .btn_ud a {display: block; width: 16px; height: 11px; background-color: transparent; cursor: pointer; border: none; text-indent: -10000px;}
+.btf fieldset label .btn_ud .up {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -420px;}
+.btf fieldset label .btn_ud .down {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -433px; margin-top: 2px;}
+.btf fieldset label .cal {width: 23px; height: 26px; margin: 3px 0 0 10px; float: left; border: none; background: transparent url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -60px -420px; cursor: pointer; display: block; text-indent: -10000px;}
+.btf fieldset label .cas {width: 120px; padding: 3px 5px; border-top: 1px solid #bcbfc5; height: 24px; background-color: #fff; overflow: hidden; float: left;}
+.btf fieldset label .input_cas {border: none; height: 20px; width: 80px; float: left; padding: 2px 0;}
+.btf fieldset label .input_date {border: none; height: 20px; width: 100px; float: left; padding: 2px 0;}
+.btf fieldset .input_submit {float: right; margin-top: -10px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -96px -420px; width: 114px; height: 40px; padding-bottom: 3px; color: #fff; font-size: 16px; font-weight: bold;}
+
+.btf fieldset label .ddownClass {margin-top: 0px; width: 175px;}
+.btf fieldset label select {width: 180px; overflow:auto;}
+
+.btf fieldset .s_completer {position: absolute; top: 36px; left: 20px; z-index: 12;}
+.btf fieldset .s_completer ul {border: 1px solid #d0d1d3; padding: 4px; background-color: #fff; z-index: 12 !important; border-top: none; top: -4px !important;}
+.btf fieldset .s_completer a {padding: 0 6px; line-height: 24px; font-size: 14px; color: #2361a7; cursor: pointer; display: block;}
+.btf fieldset .s_completer a:hover,.btf fieldset .s_completer .ui-state-hover {background-color: #c8d7e9; text-decoration: none;}
+
+.btf fieldset .radio {padding: 0 0 0 100px; float: left; }
+.btf fieldset .radio label {width: 100px; float: left; font-size: 14px; font-weight: bold;}
+.btf .ext {position: relative;}
+.btf fieldset .ext_close {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -470px; display: block; line-height: 39px; border: 1px solid #d0d1d3; border-bottom: none; text-align: center; color: #868687; font-size: 14px; font-weight: bold; margin-top: 10px;}
+.btf fieldset .ext_close em {padding-right: 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_d_silver.png.xhtml) no-repeat 100% 55%;}
+.btf fieldset .ext_close:hover {text-decoration: none;}
+.btf fieldset .ext_open {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -800px; display: block; line-height: 39px; border: 1px solid #d0d1d3; border-bottom: none; text-align: center; color: #868687; font-size: 14px; font-weight: bold; margin-top: 10px;}
+.btf fieldset .ext_open em {padding-right: 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_t_silver.png.xhtml) no-repeat 100% 55%;}
+.btf fieldset .ext_open:hover {text-decoration: none;}
+
+.btf #ext_block {position: absolute; top: 40px; left: 0; border: 1px solid #d0d1d3; border-top-color: #f1f1f2; background-color: #fff; z-index: 15; padding: 15px 20px; width: 438px;}
+.btf #ext_block label {float: left; width: 135px; padding: 0 0 0 10px;}
+.btf #ext_block label span {float: none; width: auto; line-height: normal; font-weight: normal; font-size: 14px; padding-bottom: 5px;}
+.btf #ext_block label select {width: 80px;}
+.btf #ext_block .line {clear: both; border-bottom: 1px solid #d0d1d3; height: 10px; margin-bottom: 10px;}
+.btf #ext_block strong {display: block; padding: 0 0 0 10px; width: 70px; float: left; font-weight: normal; font-size: 14px; }
+.btf #ext_block .inline {float: left; width: 105px; padding-left: 10px;}
+
+
+/* Home Page Ponuka */
+.ponuka {float: right; width: 351px; margin-right: 20px; text-align: center; position: relative;}
+.ponuka h2 {height: 40px; line-height: 40px; font-size: 18px; color: #777878; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -320px;}
+.ponuka .block {background-color: rgba(228, 236, 244, 0.85); padding: 25px 20px; font-size: 16px; text-align: center; min-height: 327px;}
+.ponuka .block a:hover {text-decoration: none;}
+.ponuka .block img {margin: 0 auto 15px auto; border: 3px solid #d9e4f0; display: block;}
+.ponuka .block em {display: block; color: #f04e37; font-weight: bold; padding-top: 8px;}
+.ponuka .block #container {width: 305px; margin: 0 auto; height: 295px; overflow: hidden;}
+.ponuka .block #container .i {width: 305px; height: 305px; margin: 0 auto;}
+.ponuka .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow363.png.xhtml) no-repeat 0 0; height: 8px; position: absolute; bottom: -5px; width: 363px; left: -6px;}
+.ponuka .pagination {margin-left: 130px;}
+
+/* Home Page 5 boxes */
+.main_boxes {clear: both; background: url(/inet-sales-web/javax.faces.resource/images/allpages/main_line.png.xhtml) no-repeat 50% 0; padding-top: 60px; width: 980px; overflow: hidden;}
+.main_boxes .block {float: left; width: 156px; padding: 0 20px 10px 20px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/boxes_shadow.png.xhtml) no-repeat 0 0; min-height: 210px; line-height: 1.5em; font-size: 14px;}
+.main_boxes .block a {color: #535454;}
+.main_boxes .block a:hover {text-decoration: none;}
+.main_boxes .block:first-child {background-image: none;}
+.main_boxes .block strong {display: block; padding: 10px 0 7px 0; color: #2361a7;}
+.main_boxes .block a:hover strong {text-decoration: underline;}
+.main_boxes .block strong.sel {font-size: 17px; background-color: #e9eff6; padding: 20px;} 
+
+.main_boxes .block li {padding: 0 0 13px 11px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 6px; line-height: 1.3em; }
+.main_boxes .block li a {color: #2361a7; font-weight: bold;}
+.main_boxes .block .info h2 {border-bottom: 5px solid #f04e37; padding-bottom: 5px; margin-bottom: 15px; font-size: 13px;}
+.main_boxes .block .info li {font-size: 12px;}
+.main_boxes .block .ponuky h2 {border-bottom: 5px solid #7caee6; padding-bottom: 5px; margin-bottom: 15px; font-size: 13px;}
+.main_boxes .block .viac {font-size: 13px; color: #2361a7; padding-left: 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -515px;}
+.main_boxes .block .viac:hover, .main_boxes .block li a:hover {text-decoration: underline;}
+
+/* Sub page */
+.a270 {float: left; width: 270px;}
+.a682 {float: right; width: 622px; background-color: rgba(255, 255, 255, 0.80); padding: 15px 30px;}
+.a980 {width: 920px; background-color: rgba(255, 255, 255, 0.80); padding: 15px 30px;}
+.a270 .ban {margin-bottom: 14px;}
+.s_line {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sub_line.png.xhtml) no-repeat 50% 0; height: 29px;}
+
+/* Drum */
+.drum {padding: 17px 0 0 20px; font-size: 12px;}
+.drum a, .drum .sep, .drum em {display: block; float: left;}
+.drum .sep {background: url(/inet-sales-web/javax.faces.resource/images/allpages/arrow.png.xhtml) no-repeat 50% 50%; width: 21px; text-indent: -10000px;}
+
+
+/* Kupa listku */
+.a270 .btf {float: none; width: 270px; margin: 0 0 14px 0;}
+.a270 .btf fieldset {padding: 10px 20px 10px 20px; min-height: auto; background-image: none;}
+.a270 .btf .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -3px; width: 270px; left: 0;}
+.a270 .btf fieldset label {display: block; width: 230px; overflow: hidden; cursor: pointer;}
+.a270 .btf fieldset label span {width: 65px;}
+.a270 .btf fieldset label .input_text {width: 155px;}
+.a270 .btf fieldset label .date {width: 125px; padding-right: 2px;}
+.a270 .btf fieldset label .cas {width: 83px; padding: 3px 2px 3px 5px; border-top: 1px solid #bcbfc5; height: 24px; background-color: #fff; overflow: hidden; float: left;}
+.a270 .btf fieldset label .input_cas {border: none; height: 20px; width: 45px; float: left; padding: 2px 0;}
+.a270 .btf fieldset label .input_date {border: none; height: 20px; width: 109px; float: left; padding: 2px 0; font-size: 14px;}
+.a270 .btf fieldset label .cal {margin-left: 7px;}
+.a270 .btf fieldset .input_submit {margin: 0 0 0 63px; float: none;}
+.a270 .btf fieldset label .btn_ud {float: right; width: 16px;}
+.a270 .btf fieldset .radio {padding: 0; float: none;}
+.a270 .btf fieldset .radio label {float: right; width: 90px;}
+.a270 .btf fieldset .radio label span {width: auto; line-height: normal; float: none; display: inline;}
+.a270 .btf fieldset label .err {color:#fc0000; padding-left: 65px; font-weight: bold;}
+.a270 .btf fieldset label .err_list {color:#fc0000;}
+.a270 .btf fieldset .b-butons {margin: 0 0 0px 0; clear: both; position: relative; top: -15px;}
+.a270 .btf fieldset .b-butons input {float: left; margin: 0; font-size: 12px; background-position: 0 -1072px;}
+.a270 .btf fieldset .b-butons input:last-child {float: right;}
+
+/* Ponuka */
+.a270 .ponuka {float: none; width: 270px; margin: 0 0 14px 0; text-align: center; position: relative;}
+.a270 .ponuka .block {padding: 6px 10px; font-size: 14px; text-align: left; min-height: 190px;}
+.a270 .ponuka .block a {display: block; width: 230px; overflow: hidden; padding: 5px 10px;}
+.a270 .ponuka .block a.brd {background-color: #d6e2ef;}
+.a270 .ponuka .block em {display: block; color: #2361a7; font-weight: normal; padding: 2px 0 0 0; float: left;}
+.a270 .ponuka .block a:hover em {text-decoration: underline;}
+.a270 .ponuka .block strong {display: block; color: #f04e37; font-weight: bold; padding: 0; float: right; font-size: 16px;}
+.a270 .ponuka .block #container {width: 250px; margin: 0; height: 170px; overflow: hidden;}
+.a270 .ponuka .block #container .i {width: 250px; height: auto; margin: 0;}
+.a270 .ponuka .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -3px; width: 270px; left: 0;}
+.a270 .ponuka .pagination {margin-left: 100px;}
+
+/* Anketa */
+.anketa {background-color: rgba(208, 209, 211, 0.30); border-bottom: 1px solid #e9e9ea; border-top: 1px solid #e9e9ea; margin-bottom: 14px; padding: 15px 19px; position: relative;}
+.anketa h2 {color: #f04e37; font-size: 18px; padding-bottom: 10px;}
+.anketa p {font-size: 14px; line-height: 1.3em; padding-bottom: 15px;}
+.anketa .answ {padding-bottom: 10px; width: 232px; overflow: hidden;} 
+.anketa .answ a {font-size: 12px; font-weight: bold; float: left; display: block; padding-bottom: 2px;}
+.anketa .answ em {float: right; display: block; text-align: right; width: 35px; font-size: 12px;}
+.anketa .answ .bar {width: 232px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -599px; height: 8px; overflow: hidden;}
+.anketa .answ .bar span {display: block; border: 1px solid #f04e37; height: 6px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -610px;}
+.anketa .archiv {border-top: 1px solid #e4e4e6; margin-left: -19px; width: 251px; padding: 10px 0 0 19px;}
+.a270 .anketa .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -3px; width: 270px; left: 0;}
+
+
+/* Sub page boxes bottom */
+.sub_boxes {clear: both; background: url(/inet-sales-web/javax.faces.resource/images/allpages/main_line.png.xhtml) no-repeat 50% 10px; padding-top: 70px; width: 980px; overflow: hidden;}
+.sub_boxes .block {float: left; width: 270px; padding: 0 28px 10px 28px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/boxes_shadow2.png.xhtml) no-repeat 0 0; line-height: 1.5em; font-size: 14px; overflow: hidden;}
+.sub_boxes .block a {color: #535454; font-size: 12px;}
+.sub_boxes .block img {float: left; padding: 0 15px 10px 0;}
+.sub_boxes .block strong {color: #2361a7; }
+.sub_boxes .block_sel strong {background-color: #e9eff6; display: block; font-size: 18px; display: block; padding: 10px; line-height: 1.5em;}
+.sub_boxes .block:first-child {background-image: none;} 
+.sub_boxes .block li {padding: 0 0 5px 11px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 6px; line-height: 1.3em; }
+.sub_boxes .block li a {color: #2361a7; font-weight: bold;}
+.sub_boxes .block .info {position: relative;}
+.sub_boxes .block .info .viac {position: absolute; top: 0px; right: 0;}
+.sub_boxes .block .info h2 {border-bottom: 5px solid #f04e37; padding-bottom: 5px; margin-bottom: 15px; font-size: 14px;}
+.sub_boxes .block .info li time {display: block; color: #868687; font-size: 12px;}
+.sub_boxes .block .info li a {font-size: 12px;}
+
+/* Detail page */
+.tools {border-bottom: 1px solid #eff0f1; height: 28px; margin-bottom: 20px;}
+.tools li {display: block; float: right; padding: 0 10px 3px 10px; border-left: 1px solid #e7e8e9; position: relative;}
+.tools li:first-child {padding-right: 0;}
+.tools li:last-child {border: none;}
+.tools li a {padding-left: 17px; background-repeat: no-repeat; background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml); font-size: 12px;}
+.tools li.letter a {background-position: 0 -658px;}
+.tools li.print a {background-position: 0 -678px;}
+.tools li.send a {background-position: 0 -700px;}
+.tools li.share a {background-position: 0 -724px;}
+.tools .sep {display: block; float: right; padding: 0 10px; color: #e7e8e9; font-weight: 300;}
+.tools li .box {position: absolute; border: 1px solid #d0d1d3; background-color: #fff; padding: 4px; top: 20px; left: 10px; display: none;}
+.tools li:hover .box {display: block;}
+.tools li .box li {float: none; border: 0; padding: 1px 0 0 0;}
+.tools li .box li a {display: block; line-height: 24px; padding: 0 4px 0 28px;}
+.tools li .box li.fb a {background: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_fb.png.xhtml) no-repeat 4px 4px;}
+.tools li .box li.tw a {background: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_tw.png.xhtml) no-repeat 4px 4px;}
+.tools li .box li.yt a {background: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_yt.png.xhtml) no-repeat 4px 4px;}
+.tools li .box li.ggl a {background: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_gp.png.xhtml) no-repeat 4px 4px;}
+.tools li .box li a:hover {text-decoration: none; background-color: #eceded;}
+.tools li .fsizer a {padding-left: 4px !important; background-image: none; white-space: nowrap; cursor: pointer;}
+
+.detail_area {line-height: 1.5em; text-align: justify;}
+.detail_area h1 {color: #f04e37; font-size: 24px; padding-bottom: 20px; line-height: 1.3em;}
+.detail_area .perex {font-size: 15px; margin-bottom: 15px; font-weight: 500; line-height: 1.5em;}
+.detail_area .image {border: 1px solid #f8f8f8; float: left; margin: 0px 10px 10px 0; padding: 2px;}
+.detail_area h2 {font-size: 18px; padding-bottom: 8px;}
+.detail_area h3 {font-size: 14px; padding-bottom: 5px;} 
+.detail_area_text p {margin-bottom: 15px; line-height: 1.7em;}
+.detail_area_text a {text-decoration: underline;}
+.detail_area_text ul {padding-bottom: 10px; margin-left: 15px; padding-left: 10px; list-style: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_li.png.xhtml);}
+.detail_area_text ul li {padding: 0 0 5px 5px;}
+.detail_area_text ul li p {margin: 0;}
+.detail_area_text ul ul {list-style: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_lili.png.xhtml); padding-bottom: 0; padding-top: 5px;}
+.detail_area .suvis {float: right; width: 210px; padding: 15px 20px; background-color: #fff0e7; margin: 0 0 10px 20px; position: relative;}
+.detail_area .suvis h2 {color: #f04e37; font-size: 16px;}
+.detail_area .suvis ul {list-style-image: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml); margin-left: 10px;}
+.detail_area .suvis .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267_2.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -2px; width: 267px; left: -8px;}
+
+/* Vysledky vyhladavanie */
+.search_result h1 {color: #f04e37; font-size: 24px; padding-bottom: 20px; line-height: 1.3em;}
+.search_result h2 {font-size: 18px; padding-bottom: 8px;}
+.search_result ul {padding-bottom: 20px; margin-left: 15px; padding-left: 10px; list-style: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_li.png.xhtml);}
+.search_result ul li {padding: 0 0 5px 5px;}
+.search_result ul li p {margin: 0;}
+
+/* Fotogaleria */
+.galeria {margin: 20px 0 40px 0; position: relative;}
+.galeria h2 {padding-bottom: 15px;}
+.galeria .block {background-color: #e7e8e9; padding: 20px 0 0 0;}
+.galeria .block a {display: block; float: left; margin: 0 0 20px 20px;}
+.galeria .block img {border: 2px solid #fff;}
+.galeria .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow627.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -1px; width: 622px; left: 0;}
+
+/* Dokumenty na stiahnutie */
+.dokum {margin: 20px 0 40px 0; position: relative;}
+.dokum h2 {padding-bottom: 15px;}
+.dokum .block {border: 1px solid #e7e8e9; background-color: #fff; padding: 20px; padding-bottom: 5px;}
+.dokum .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow627.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -1px; width: 622px; left: 0;}
+.dokum p {padding: 0 0 15px 24px; background-position: 0 0; background-repeat: no-repeat;}
+.dokum p a {font-size: 14px; font-weight: bold;}
+.dokum p span {display: block; font-size: 12px;}
+.dokum p.pdf {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_pdf.png.xhtml);}
+.dokum p.doc {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_doc.png.xhtml);}
+.dokum p.xls {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_xls.png.xhtml);}
+.dokum p.ppt {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_ppt.png.xhtml);}
+
+/* tabulky */
+#page .detail_area table {width: 100%; border-collapse: collapse; border-spacing: 0; margin-bottom: 30px; font-size: 14px;}
+#page .detail_area table caption {text-align: left; font-size: 13px; padding-bottom: 10px;}
+#page .detail_area table thead td, #page .detail_area table th {font-size: 15px; font-weight: bold; text-align: left;}
+#page .detail_area table thead td, #page .detail_area table th {padding: 8px 5px 8px 15px;}
+#page .detail_area table tbody td {padding: 5px 5px 5px 15px; border-bottom: 1px solid #dcddde; text-align: left;}
+
+#page .detail_area table.tab01 thead td, #page .detail_area table.tab01 th {background-color: #f1f1f2; border-bottom: 1px solid #d0d1d3;}
+#page .detail_area table.tab02 {border: 1px solid #e7e8e9; border-collapse: separate;}
+#page .detail_area table.tab02 thead td, #page .detail_area table.tab02 th {background: #2362a8 url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -620px; color: #fff;}
+
+.htmlarea-showtableborders thead td {background-color: #f1f1f2; border-bottom: 1px solid #d0d1d3;}
+#page .detail_area table p {margin: 0; line-height: 1.5em; text-align: left;}
+
+.top_anchor {font-size: 14px; font-weight: bold;}
+
+.detail_area.plus p, .detail_area.plus {font-size: 18px !important;}
+.detail_area.plus h1 {font-size: 30px;}
+.detail_area.plus .perex {font-size: 20px;}
+.detail_area.plus h2 {font-size: 24px;}
+.detail_area.plus h3,.detail_area.plus .dokum p a, .detail_area.plus .dokum p span,.detail_area.plus table caption, .detail_area.plus table td, .detail_area.plus table th {font-size: 18px;}
+
+.detail_area.minus p, .detail_area.minus {font-size: 10px;}
+.detail_area.minus h1 {font-size: 18px;}
+.detail_area.minus .perex p {font-size: 12px;}
+.detail_area.minus h2 {font-size: 14px;}
+.detail_area.minus h3,.detail_area.minus .dokum p a, .detail_area.minus .dokum p span,.detail_area.minus table caption, .detail_area.minus table td, .detail_area.minus table th {font-size: 10px;}
+
+/* Custom form */
+.form {border-bottom: 1px solid #f0f0f1; padding-bottom: 14px; margin-bottom: 20px; margin-top: 10px;}
+.form .input_text {height: 21px; padding: 5px; color: #535454; font-size: 14px; border: 1px solid #b8b9ba;}
+.form .input_submit {height: 33px; border: 1px solid #f04e37; padding: 0 15px; color: #fff; font-size: 14px; font-weight: bold; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -860px;}
+.form .del {display: block; float: right; margin-right: 20px; padding-left: 18px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -759px;}
+.form select {height: 33px; padding: 5px; color: #535454; font-size: 14px; border: 1px solid #b8b9ba; max-width: 620px;}
+.fa_form .input_text {float: left; margin-right: 8px; width: 135px;}
+.fa_form select {float: left; margin-right: 8px; }
+.fa_form .input_submit {float: right;}
+
+.news_form .sdrop {border: 1px solid #b8b9ba; height: 22px; width: 150px; float: left; margin-right: 8px; padding: 4px 3px 5px 5px; overflow: hidden;}
+.news_form .sdrop .input_sdrop {border: none; width: 120px; float: left; margin-top: 1px;}
+.news_form .sdrop .btn_ud {float: right; width: 16px;}
+.news_form .sdrop .btn_ud a {display: block; width: 16px; height: 11px; background-color: transparent; cursor: pointer; border: none;}
+.news_form .sdrop .btn_ud .up {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -420px;}
+.news_form .sdrop .btn_ud .down {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -433px; margin-top: 2px;}
+.news_form .cal {width: 23px; height: 26px; margin: 3px 10px 0 0; float: left; border: none; background: transparent url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -60px -420px; cursor: pointer;}
+.news_form .input_submit {float: left;}
+
+.kontakt_form {border: none;}
+.kontakt_form .input_text {display: block; margin: 10px 0; width: 230px;}
+.kontakt_form .error {color: #ff0000; font-size: 14px; display: block; margin: 0 0 15px 5px; font-weight: bold; }
+.kontakt_form textarea {display: block; margin: 15px 0; width: 610px; border: 1px solid #b8b9ba;}
+.kontakt_form .ok {color: #01a109; font-size: 14px; font-weight: bold; padding-top: 15px;}
+.kontakt_form h3 {padding: 15px 0 5px 0;}
+.kontakt_form input[type="radio"] {margin-left: 10px;}
+.kontakt_form .input_submit {margin-top: 15px;}
+
+.send_by_mail_form {margin-top:0px;}
+
+.pg {text-align: center; margin-top: 15px; height: 30px; overflow: hidden;}
+.pg table {margin: 0 auto; border-spacing: 0; width: auto !important;}
+.pg table tr td {border: none; font-size: 14px; font-weight: bold; padding: 0;}
+.pg a {display: block; float: left; line-height: 25px; margin: 0 2px; width: 25px; text-align: center; height: 25px;}
+.pg span, .pg em {display: block; float: left; line-height: 25px;}
+.pg em {color: #535454; padding: 0 10px;}
+.pg span {color: #ddd;  margin: 0 4px;}
+.pg .prev, .pg .next {margin: 0 15px; width: auto;}
+.pg a.sel {color: #fff; background-color: #f04e37; text-decoration: none;}
+.pg a.sel mark {color: #fff; display: block;}
+
+table.nobrd td {border: none !important;}
+
+/* Mailing list box */
+.a270 .mailing {width: 270px; margin: 0 0 14px 0; text-align: center; position: relative;}
+.a270 .mailing h2 {height: 40px; line-height: 40px; font-size: 18px; color: #777878; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -320px;}
+.a270 .mailing .block {padding: 15px 15px 10px 20px; font-size: 14px; text-align: left; background-color: rgba(228, 236, 244, 0.85);}
+.a270 .mailing .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -3px; width: 270px; left: 0;}
+.a270 .mailing p {font-size: 13px;}
+.a270 .mailing p strong {display: block; padding: 5px 0;}
+.a270 .mailing label {display: block; padding-bottom: 5px;}
+.a270 .mailing label span {display: block; padding-bottom: 3px;}
+.a270 .mailing label .input_text {width: 224px;}
+.a270 .mailing .input_submit {margin: 10px 0 0 0; float: right; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -96px -420px; width: 114px; height: 40px; padding-bottom: 3px; color: #fff; font-size: 16px; font-weight: bold;}
+.a270 .mailing .error {color: #ff0000;}
+
+/* Nakupny proces */
+
+/* Parametre  a dopravne prostriedky */
+.a270 .param, .a270 .dop_prost {width: 270px; margin: 0 0 14px 0; text-align: center; position: relative;}
+.a270 .param h2, .a270 .dop_prost h2 {height: 40px; line-height: 40px; font-size: 18px; color: #777878; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -370px;}
+.a270 .dop_prost h2 a {color: #777878; padding-right: 10px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 100% 50%;}
+.a270 .dop_prost h2 a.open {background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_d.png.xhtml);}
+.a270 .dop_prost h2 a:hover {text-decoration: none;}
+.a270 .param .block, .a270 .dop_prost .block {padding: 15px 15px 5px 20px; font-size: 14px; text-align: left; background-color: rgba(187, 211, 237, 0.75);}
+.a270 .dop_prost .block {padding: 10px 10px 10px 10px;}
+.a270 .param .shdw, .a270 .dop_prost .shdw {background: url(/inet-sales-web/javax.faces.resource/images/allpages/shadow267.png.xhtml) no-repeat 50% 0; height: 4px; position: absolute; bottom: -3px; width: 270px; left: 0;}
+
+.a270 .param label {display: block; padding-bottom: 20px; width: 233px; overflow: hidden;}
+.a270 .param label span {display: block; float: left; width: 160px; font-weight: bold;}
+.a270 .param label input[type='checkbox'] {margin: 3px 0 0 25px;}
+.a270 .param .radio {padding-bottom: 10px;}
+.a270 .param .radio strong {display: block; float: left; width: 70px;}
+.a270 .param .radio .inputs {float: left; width: 150px; }
+.a270 .param .radio .inputs label {float: right; width: auto; padding-bottom: 10px;}
+.a270 .param h3 {padding-bottom: 10px;}
+.a270 .param label .num {width: 60px; padding: 3px 5px; border-top: 1px solid #bcbfc5; height: 24px; background-color: #fff; overflow: hidden; float: left;}
+.a270 .param label .input_numMax {border: none; height: 20px; width: 40px; float: left; padding: 2px 0;}
+.a270 .param label .input_numMin {border: none; height: 20px; width: 40px; float: left; padding: 2px 0;}
+.a270 .param label .title {line-height: 31px;}
+.a270 .param label .btn_ud {float: right; width: 16px;}
+.a270 .param label .btn_ud a {display: block; width: 16px; height: 11px; background-color: transparent; cursor: pointer; border: none;}
+.a270 .param label .btn_ud .up {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -420px;}
+.a270 .param label .btn_ud .down {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -433px; margin-top: 2px;}
+
+.a270 .dop_prost .all {display: block; width: 250px; overflow: hidden; padding: 5px 0 5px 10px;}
+.a270 .dop_prost .all input {margin-right: 10px; float: left;}
+.a270 .dop_prost .all span {font-weight: bold; float: left; width: 150px;}
+.a270 .dop_prost #chbs {border-top: 1px solid #a8c4e5; padding-top: 5px;}
+.a270 .dop_prost #chbs div {width: 250px; overflow: hidden; padding: 8px 0;}
+.a270 .dop_prost #chbs label {display: block; float: left; padding-left: 10px; width: 70px;}
+.a270 .dop_prost #chbs .bg {background-color: #adcdf0;}
+
+/* Nakup center */
+.nakup {}
+.nakup div.err {background: #fc0000 url(/inet-sales-web/javax.faces.resource/images/allpages/warning_error.png.xhtml) no-repeat 5px 5px; padding: 10px 5px 10px 50px; margin-bottom: 10px; color: #fff; font-weight: bold;}
+.nakup div.err_visible {background: #fc0000 url(/inet-sales-web/javax.faces.resource/images/allpages/warning_error.png.xhtml) no-repeat 5px 5px; padding: 10px 5px 10px 50px; margin-bottom: 10px; color: #fff; font-weight: bold;}
+.nakup div.alert {background: #CBDDF0 url(/inet-sales-web/javax.faces.resource/images/allpages/alert.png.xhtml) no-repeat 5px 5px; padding: 10px 5px 10px 50px; margin-bottom: 10px; color: #2361A7; font-weight: bold;}
+.nakup div.exclamation {background: url(/inet-sales-web/javax.faces.resource/images/exclamation.png.xhtml) no-repeat 5px 5px; float: left; padding: 0px 5px 10px 50px; }
+
+.nakup .top_anchor {margin-top: 30px;}
+.nakup h1 {color: #f04e37; font-size: 24px; padding-bottom: 20px; line-height: 1.3em;}
+.nakup h2.title {font-size: 18px; padding-bottom: 25px; line-height: 1.3em;}
+.nakup .n_links {padding-bottom: 15px;}
+.nakup .n_links a {font-size: 12px;}
+.nakup .n_links .sep {color: #e7e7e8; padding: 0 5px;}
+
+.nakup .progress {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -900px; height: 33px; margin-bottom: 22px; padding: 9px 0 8px 15px;}
+.nakup .progress a, .nakup .progress span, .nakup .progress em {display: block; float: left;}
+.nakup .progress a, .nakup .progress em {height: 30px; line-height: 30px; width: 180px; text-align: center; font-size: 13px; color: #fff; font-weight: bold; border: 1px solid #f04e37; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -860px;}
+.nakup .progress em {border: none; background-position: 0 -960px; margin-top: 1px;}
+.nakup .progress em strong, .nakup .progress a strong {color: #fdd78b;}
+.nakup .progress span.sep {width: 23px; line-height: 30px; text-align: center; color: #afafb0;}
+
+.nakup .s_info {margin-bottom: 17px; padding-left: 80px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/ico_vlak.png.xhtml) no-repeat 0 20px;}
+.nakup .s_info .left {float: left; width: 280px; padding-right: 10px;}
+.nakup .s_info .right {float: left; width: 240px;}
+.nakup .s_info p {padding-bottom: 8px; overflow: hidden;}
+.nakup .s_info .left p {width: 280px;}
+.nakup .s_info .right p {width: 240px;}
+.nakup .s_info p span {display: block; float: left; width: 57px; font-size: 12px; padding-top: 7px;}
+.nakup .s_info p strong {display: block; float: left; font-size: 18px; width: 220px;}
+.nakup .s_info .right p strong {width: 180px;}
+.nakup .xmove {height: 25px; font-size: 12px; margin-bottom: 15px;}
+.nakup .xmove .prev {float: left;}
+.nakup .xmove .next {float: right;}
+.nakup .xmove a {display: block; float: left; height: 25px; color: #fff; font-weight: bold; padding: 0 13px; line-height: 24px; margin-right: 20px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center;}
+.nakup .xmove .print {margin-left: 70px; }
+.nakup .xmove form input[type="submit"] {display: block; height: 25px; color: #fff; font-weight: bold; padding: 0 13px; line-height: 24px; margin-left: 70px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; border: none; }
+.nakup .xmove a:hover {text-decoration: none;}
+
+/* Vypis spojov */
+.nakup select, .nakup .input_text, .nakup input[type="text"] {border: 1px solid #ccc9c9; background-color: #ebebeb; font-size: 12px; color: #535454;}
+.nakup select {padding: 2px 5px; height: 23px;}
+.nakup .input_text, .nakup input[type="text"] {padding: 3px 5px; height: 17px;}
+.nakup .s_items {padding-bottom: 20px;}
+.nakup .s_items .item {margin-bottom: 15px;}
+.nakup .caption {background: #f1f1f2 url(/inet-sales-web/javax.faces.resource/images/allpages/arr_li.png.xhtml) no-repeat 12px 15px; margin-bottom: 3px; padding: 8px 0 8px 30px;  width: 592px; overflow: hidden;}
+.nakup .caption h2 {float: left; line-height: 20px; width: 450px;}
+.nakup .caption h2 em {font-weight: normal;}
+.nakup .c_full h2 {float: none !important; width: auto !important;}
+.nakup .caption ul {float: right;}
+.nakup .caption ul li {float: left; padding: 0 10px; border-left: 1px solid #dbdcdd;}
+.nakup .caption ul li:first-child {border: none;}
+.nakup .s_items .item .caption ul li a {display: block; text-indent: -10000px; height: 18px;}
+.nakup .caption ul li a.sel {color: #f04e37;}
+.nakup .s_items .item .caption ul li a.i {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -120px -759px; width: 16px; }
+.nakup .s_items .item .caption ul li a.o {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -150px -759px; width: 24px; }
+.nakup .s_items .item .caption ul li a.e {background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -189px -759px; width: 12px; }
+
+.nakup table.info_spoj {width: 100%; font-size: 12px; margin: 0; }
+.nakup table.info_spoj td {width: 25%; padding: 10px 0 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; border-bottom: none; border-top: 1px solid #e7e8e9; vertical-align:top;}
+.nakup table.info_spoj td:first-child {padding: 10px 0 10px 45px; background-position: 32px 16px;}
+.nakup table.info_spoj tr:first-child td {border: none;}
+.nakup table.info_spoj tr.prestup td {border-color: #91afd2;}
+.nakup table.info_spoj td.e {background-image: none;}
+.nakup table.info_spoj td .n_day {color: #cf0c3f;}
+.nakup table.info_spoj td a {color: #535454; }
+.nakup table.info_spoj td a:hover { position: relative; text-decoration: none; }
+
+.nakup table.info_spoj td a[ikvcTitle]:hover:after {
+  content: attr(ikvcTitle);
+  padding: 4px 8px;
+  color: #535454;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  white-space: nowrap;
+  z-index: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background: -webkit-gradient(linear,left top,left bottom, from(#fff), to(#f1f1f2));
+  background: -webkit-linear-gradient(top, #fff, #f1f1f2);
+  background: -moz-linear-gradient(top, #fff, #f1f1f2);
+  background: -moz-linear-gradient(top, #fff, #f1f1f2);
+  background: -ms-linear-gradient(top, #fff, #f1f1f2);
+  background: -o-linear-gradient(top, #fff, #f1f1f2);
+}
+
+
+.nakup .n_btn {height: 30px; margin: 10px 0;}
+.nakup .n_btn a {display: block; float: left; height: 25px; border: 1px solid #f04e37; color: #fff; font-weight: bold; padding: 0 5px 0 4px; line-height: 24px; margin-right: 5px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -1000px; text-align: center;}
+.nakup .n_btn a:hover {text-decoration: none;}
+.nakup .n_btn form input {display: block; float: left; height: 25px; border: 1px solid #f04e37; color: #fff; font-weight: bold; padding: 0 2px 4px 2px; line-height: 24px; margin-right: 4px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -1000px; text-align: center;}
+.nakup .addrem_btn input { float: right; height: 25px; color: #fff; font-weight: bold; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center;}
+
+/* Info trasa */
+.trasa {padding-bottom: 30px;} 
+.trasa table {width: 100%; border-collapse: collapse; border-spacing: 0; margin-bottom: 15px;}
+.nakup table caption {text-align: left; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -620px; padding-left: 14px; color: #fff; font-weight: bold; height: 34px; line-height: 33px;}
+.trasa table td {border-collapse: collapse; }
+.trasa table thead td {background-color: #f1f1f2; line-height: 33px; font-weight: bold; padding: 0 5px 0 15px;}
+.trasa table tbody td {border-bottom: 1px solid #e7e8e9; padding: 11px 5px 10px 15px; vertical-align: top; font-size: 12px; font-weight: bold;}
+.trasa table tbody tr.n td {font-weight: normal;}
+.trasa table td.km {text-align: right; width: 25px;}
+.trasa table td.cas {text-align: right; width: 120px;}
+.trasa table tr td:last-child {padding-right: 15px;}
+.trasa table tbody tr:last-child td {border-color: #91afd2;}
+.trasa .note {padding: 0 0 25px 15px;}
+.trasa .note p {font-size: 12px; line-height: 1.7em; padding-left: 13px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 8px;}
+.trasa .n_btn a {float: right; margin: 0 0 0 20px; min-width: 100px; }
+
+/* Obsadenost */
+.obsadenost {padding-bottom: 30px;} 
+.obsadenost table {width: 100%; border-collapse: collapse; border-spacing: 0; margin-bottom: 15px;}
+.obsadenost table thead td {background-color: #f1f1f2; line-height: 33px; font-weight: bold; padding: 0 10px 0 10px; text-align: center; }
+.obsadenost table tbody td {border-bottom: 1px solid #e7e8e9; padding: 11px 10px 10px 10px; vertical-align: top; font-size: 12px; text-align: center; }
+.obsadenost table tbody tr:last-child td {border: none;}
+.obsadenost table td.type {width: 140px; padding-right: 20px;}
+.obsadenost table td.i {width: 70px;}
+.obsadenost .legenda {margin-top: 30px; padding: 10px 0 0 15px; border-top: 1px solid #91afd2;}
+.obsadenost .legenda p {line-height: 21px; padding-bottom: 7px; font-size: 12px;}
+.obsadenost .legenda p img {margin-right: 5px;}
+
+/* Nakup 2.krok */
+.nakup .step2 .caption h2 {float: left; line-height: 20px; width: 370px;}
+.nakup .step2 .caption .del {display: block; float: right; margin-right: 20px; padding-left: 18px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -759px;}
+.nakup .step2 .n_btn {margin: 20px 0 30px 0;}
+.nakup .n_btn .next {float: right;}
+.nakup .step2 .error {color:#fc0000; padding-left: 30px; font-weight: bold;}
+
+#selection_result {margin: 0 auto 10px auto; }
+#selection_result a { display: block; float: right; color: #fff; height: 23px; width: 40%; font-weight: bold;  background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; cursor: pointer; text-decoration: none; padding-top: 4px; }
+#selection_result div.places_selected {  float: left; padding-left: 30px;}
+
+.specific_status_line_panel { display: block; }
+.specific_status_line_panel .places_info { height: 50px; padding-top:10px; }
+.specific_status_line_panel div.places_selected { float: left; padding-left: 10px; font-weight: bold; margin-left: 30px; }
+.specific_status_line_panel div.places_selected em { font-weight: normal; }
+.specific_status_line_panel div.places_to_select { float: right; color:red; margin-right: 30px; }
+.specific_status_line_panel a.places_to_select_button { display: block; float: right; color: #fff; height: 23px; width: 20%; font-weight: bold;  background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; cursor: pointer; text-decoration: none; padding-top: 4px; margin-right: 30px; }
+
+
+.step2 .typ_pass {margin: 15px 0;}
+.typ_pass .zlavy {display: block; width: 600px; overflow: hidden; padding: 15px 0 20px 30px;}
+.typ_pass label em {display: block; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.typ_pass label select {float: left; width: 60px;}
+.typ_pass .zlavy x {border-top: 1px solid #e7e7e9; margin-top: 10px; padding: 15px 0 0 0; width: 600px;}
+.typ_pass .zlavy p {padding: 0 0 5px 0; height: 20px;}
+.typ_pass .zlavy p strong.type {width: 190px; float: left; margin-left: 10px;}
+.typ_pass .zlavy p strong.zlava {width: 85px; float: left; margin-left: 13px;}
+.typ_pass .zlavy p strong.favorite_travellers {width: 228px; float: left; margin-left: 13px;}
+.typ_pass .zlavy p strong.clean {width: 60px; float: left;}
+.typ_pass .zlavy p strong.clean_mps {width: 60px; float: left; margin-left: 200px; }
+.typ_pass .zlavy label {display: block; float: left; width: 600px; padding: 10px 0 0 0;}
+.typ_pass .zlavy label select {width: 200px; float: left;}
+.typ_pass .zlavy label select.type { width: 260px; float: left; margin-left: 3px;}
+.typ_pass .zlavy label input.type {width: 85px; float: left; margin-left: 3px; height: 15px;}
+.typ_pass .zlavy label a.clean {display: block; width: 22px; text-align: center; line-height: 22px; color: #fff; font-weight: bold; background: #C00; float: left; margin-left: 4px;}
+
+.typ_pass .zlavy .label {display: block; float: left; width: 600px; padding: 10px 0 0 0;}
+.typ_pass .zlavy .label select {width: 200px; float: left;}
+.typ_pass .zlavy .label select.type { width: 260px; float: left; margin-left: 3px;}
+.typ_pass .zlavy .label input.type {width: 85px; float: left; margin-left: 3px; height: 15px;}
+.typ_pass .zlavy .label input[type='checkbox'] { width: 80px; float: left; border: 1px solid red; }
+.typ_pass .zlavy .label span { width: 200px; float: left; }
+.typ_pass .zlavy .label a.clean {display: block; width: 22px; text-align: center; line-height: 22px; color: #fff; font-weight: bold; background: #C00; float: left; margin-left: 4px;}
+
+.step2 .miesto {margin: 15px 0;}
+.miesto label.typ {display: block; width: 592px; padding-bottom: 9px; overflow: hidden; padding-left: 30px;}
+.miesto label.tcd {display: block; width: 592px; padding-bottom: 9px; overflow: hidden; padding-left: 30px;}
+.miesto label.typ0 {display: block; width: 400px; padding-bottom: 9px; overflow: hidden; padding-left: 30px;}
+.miesto label.typ em {display: block; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.miesto label.tcd em {display: block; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.miesto label.typ0 em {display: block; float: left; line-height: 23px; width: 400px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.miesto label.typ select {float: left; width: 160px;}
+.miesto label.typ input[type="submit"] { display: block; float: right; color: #fff; border: none; width: 30%; height: 24px; font-weight: bold; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; cursor: pointer;}
+.miesto label.typ a { display: block; float: right; color: #fff; height: 23px; width: 40%; font-weight: bold;  background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; cursor: pointer; text-decoration: none; padding-top: 4px; }
+.miesto label.typ input[type="radio"] { display: block; float: right; color: #fff; border: none; width: 30%; height: 24px; font-weight: bold; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -960px; text-align: center; cursor: pointer;}
+.miesto label.typ table { width: 160px; }
+.miesto label.typ table td { font-size: 12px; line-height: 23px; }
+.miesto label.typ table input[type="radio"] { display: inline; float: none; height: auto; vertical-align: sub; }
+
+.miesto .radio, .miesto .itext, .miesto .typ {padding-left: 30px;}
+.miesto .radio span, .miesto .itext span, .miesto .typ span {display: block; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.miesto .radio .inputs, .miesto .itext .inputs, .miesto .typ .inputs {float: left; width: 450px;}
+.miesto .radio .inputs label {display: block; float: left; width: 150px; overflow: hidden; padding-bottom: 15px;}
+.miesto .radio .inputs label input {float: left; margin-left: 0;}
+.miesto .radio .inputs label em {display: block; float: left; white-space: nowrap; padding: 1px 0 0 5px; font-size: 12px;}
+.miesto .itext .inputs label {display: block; width: 400px; padding-bottom: 10px; overflow: hidden;}
+.miesto .itext .inputs label .input_text {width: 50px; float: left;}
+.miesto .itext .inputs label em {display: block; float: left; padding-left: 10px; line-height: 23px; font-size: 12px;}
+
+/* Nakup 3.krok */
+.drum_kosik {padding-bottom: 25px; width: 620px; overflow: hidden;}
+.drum_kosik span, .drum_kosik strong {display: block; float: left; color: #2361a7;}
+.drum_kosik span.sep {text-indent: -10000px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arrow.png.xhtml) no-repeat 50% 50%; width: 20px;}
+.drum_kosik strong {color: #3a3a3b; font-style: normal; font-weight: normal;}
+.nakup .step3 .caption h2 {float: left; line-height: 20px; width: 300px;}
+.nakup .step3 .caption .del {display: block; float: right; margin-right: 20px; padding-left: 18px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -759px;}
+.nakup .step3 .n_btn {margin: 20px 0 30px 0;}
+.nakup .total {background-color: #e0e9f3; line-height: 33px; padding: 0 12px; margin: 30px 0; text-align: right; font-weight: bold; font-size: 13px;}
+.nakup .total strong {color: #f04e37;}
+.nakup .step3 .item {margin-bottom: 10px;}
+.nakup .step3 p {padding: 10px 0 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; border-top: 1px solid #e7e8e9; font-size: 12px;}
+.nakup .step3 .blok p:first-child {border-color: #91afd2;}
+
+/* Nakup 4.krok */
+.nakup .step4 .caption h2 {float: left; line-height: 20px; width: 300px;}
+.nakup .step4 .caption .del {display: block; float: right; margin-right: 20px; padding-left: 18px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -759px;}
+.nakup .step4 .item {margin-bottom: 10px;}
+.nakup .step4 p {padding: 10px 0 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; border-top: 1px solid #e7e8e9; font-size: 12px;}
+.nakup .step4 .blok p:first-child {border-color: #91afd2;}
+.nakup .step4 .n_btn {margin: 20px 0 30px 0;}
+
+.platitel {padding: 15px 0; font-size: 12px;}
+.platitel label {display: block; width: 580px; overflow: hidden; padding-bottom: 5px; padding-left: 30px;}
+.platitel label em {display: block; float: left; line-height: 23px; width: 130px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.platitel label em i {color: #f04e37; font-style: normal;}
+.platitel label .blok {float: left; display: block; position: relative; width: 438px;}
+.platitel label .blok .input_text {width: 150px; display: block; }
+.platitel label .blok small {display: block; font-size: 10px; padding: 5px 15px 0 0;}
+.platitel label .error .input_text {border-color: #f04e37; border-width: 2px;}
+.platitel label .error span {position: absolute; left: 170px; display: block; color: #fff; font-weight: bold; font-size: 10px; text-align: center; height: 26px; line-height: 26px; width: 150px; padding: 0 5px 0 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -1030px; top: 0;}
+.platitel .udaje {width: 590px; overflow: hidden; padding: 0 0 20px 30px;}
+.platitel .udaje p {display: block; float: left; font-weight: bold; border: none; padding: 0; background-image: none;}
+.platitel .udaje .input_submit {float: right; height: 27px; border: 1px solid #f04e37; color: #fff; font-weight: bold; padding: 0 13px; line-height: 24px;background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -1000px;}
+
+.reimbursement {padding: 15px 0; font-size: 12px;}
+.reimbursement span {display: block; width: 850px; overflow: hidden; padding-bottom: 5px; padding-left: 30px;}
+.reimbursement span em {display: block; float: left; line-height: 23px; width: 230px; padding-left: 12px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%; font-size: 12px;}
+.reimbursement span em i {color: #f04e37; font-style: normal;}
+.reimbursement span .radio {padding-left: 0px; padding-top:10px; float: left; width: 600px;}
+.reimbursement span .radio label span{display: inline; padding-left: 0px;  padding-right: 40px; vertical-align:middle; }
+.reimbursement span .blok {float: left; display: block; position: relative; width: 545px;}
+.reimbursement span .blok .input_text {width: 225px; display: block; }
+.reimbursement span .blok .error {border-color: #f04e37; border-width: 2px;}
+.reimbursement span .blok .bankAccountForNumber {width: 100px; float: left; }
+.reimbursement span .blok .bankAccountNumber {width: 155px; float: left; }
+.reimbursement span .blok .bankCode {width: 45px;}
+.reimbursement span .blok .bankAccountSeparator {width: 8px; float: left; line-height: 23px;  padding-left: 5px;}
+.reimbursement span .blok small {display: block; font-size: 10px; padding: 5px 15px 0 0;}
+.reimbursement span .blok .errMessage {position: absolute; left: 280px; display: block; color: #fff; font-weight: bold; font-size: 10px; text-align: center; height: 26px; line-height: 26px; width: 150px; padding: 0 5px 0 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -1030px; top: 0;}
+.reimbursement span .blok .bankAccountErrMessage {position: absolute; left: 405px; display: block; color: #fff; font-weight: bold; font-size: 10px; text-align: center; height: 26px; line-height: 26px; width: 150px; padding: 0 5px 0 15px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat 0 -1030px; top: 0;}
+
+.reimbursementInfo p {padding: 10px 0 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; border-top: 1px solid #e7e8e9; font-size: 12px;}
+.reimbursementInfo .platitel p {border: none; display: block; width: 750px; overflow: hidden;} 
+.reimbursementInfo .platitel p em {display: block; float: left; width: 230px;}
+.reimbursementInfo .platitel p strong {display: block; float: left; width: 440px;}
+
+.nakup .step4 .err {font-weight: bold; color: #fff;}
+.nakup .step4 .chb {padding-bottom: 10px;} 
+.nakup .step4 .chb label {display: block; width: 560px; padding: 0 0 10px 30px; overflow: hidden;}
+.nakup .step4 .chb label input {float: left;}
+.nakup .step4 .chb label em {padding-left: 0; font-size: 13px; width: 520px; float: right; }
+.nakup .step4 .chb p {border: none; padding: 0; background-image: none; padding-left: 30px; font-size: 13px;}
+.nakup .step4 .chb p i {color: #f04e37; font-style: normal;}
+
+/* Nakup 5.krok */
+.nakup .step5 .err {color:#fff; font-weight: bold;}
+.nakup .step5 .caption h2 {float: left; line-height: 20px; width: 390px;}
+.nakup .step5 .caption .del {display: block; float: right; margin-right: 20px; padding-left: 18px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) no-repeat -230px -759px;}
+.nakup .step5 .item {margin-bottom: 10px;}
+.nakup .step5 p {padding: 10px 15px 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; border-top: 1px solid #e7e8e9; font-size: 12px;}
+.nakup .step5 .blok p:first-child {border-color: #91afd2;}
+.nakup .step5 .n_btn {margin: 20px 0 30px 0;}
+.nakup .step5 .platitel p {border: none; display: block; width: 560px; overflow: hidden;} 
+.nakup .step5 .platitel p em {display: block; float: left; width: 100px;}
+.nakup .step5 .platitel p strong {display: block; float: left; width: 440px;}
+.nakup .step5 .total {margin-bottom: 1px;}
+.nakup .step5 .blok {border-top: 1px solid #e7e8e9; padding: 10px 0 0 30px;}
+.nakup .step5 .blok  p {border: none; padding-left: 12px; background-position: 0 16px;}
+.nakup .step5 .blok table {display: block;}
+.nakup .step5 .blok table input {float: left; margin: 2px 10px 0 12px;}
+.nakup .step5 .blok table label {display: block; float: left; padding: 0 0 0 0;}
+.nakup .step5 .typy {border: none; padding: 5px 0 15px 30px;}
+.nakup .step5 .typy tr {display: block; width: 582px; overflow: hidden; line-height: 33px; float: none; padding-left: 12px;}
+.nakup .step5 .typy td input {float: left; margin: 10px 0 0 0;}
+.nakup .step5 .typy td label {display: block; float: left; width: 500px; padding: 0 0 0 10px; line-height: 33px;}
+.nakup .step5 .typy .loga {float: right;}
+.nakup .step5 .podmienky {padding-left: 12px; font-size: 11px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 0 50%;}
+.nakup .step5 .chb_term {padding: 10px 7px; float: left !important; font-size: 12px;}
+
+.nakup table.tab02 {border: 1px solid #e7e8e9; border-collapse: separate;}
+.nakup table.tab02 th {background: #2362a8 url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -620px; color: #fff; padding: 5px; white-space: nowrap;}
+.nakup table.tab02 td {padding: 5px; border-bottom: 1px solid #e7e8e9;}
+.nakup table.tab02 tr:last-child td {border: none;}
+.nakup table.tab02 tr {cursor: pointer;}
+
+/* Nakup 6.krok */
+.nakup .step6 p {padding: 10px 5px 10px 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/arr_r.png.xhtml) no-repeat 32px 16px; font-size: 12px;}
+.nakup .step6 p.adobe {color: #828686; font-style: italic; border-top: 1px solid #e7e8e9;}
+.nakup .step6 .btn {display: block; height: 25px; border: 1px solid #f04e37; color: #fff; font-weight: bold; width: 210px; line-height: 24px; margin-left: 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -1000px; text-align: center; font-size: 12px;}
+.nakup .step6 .btn:hover {text-decoration: none;}
+
+.customerItd .btn { display: block; height: 25px; border: 1px solid #f04e37; color: #fff; font-weight: bold; width: 210px; line-height: 24px; margin-left: 45px; background: url(/inet-sales-web/javax.faces.resource/images/allpages/itd_list_download.png.xhtml) repeat-x 0 -1000px; text-align: center; font-size: 12px;}
+
+.fnf404 {padding: 125px 0 15px 500px; text-align: left; background: rgba(255, 255, 255, 0.8) url(/inet-sales-web/javax.faces.resource/images/allpages/bg_404.png.xhtml) no-repeat 177px 0px; min-height: 276px;}
+.fnf404 h1 {font-size: 30px; color: #494949; line-height: 1.2em;}
+.fnf404 h1 em {font-size: 43px; color: #f04e37; font-style: normal; display: block;}
+
+.error_page {padding: 125px 0 15px 505px; background: rgba(255, 255, 255, 0.8) url(/inet-sales-web/javax.faces.resource/images/allpages/bg_error_page.png.xhtml) no-repeat 180px 125px; min-height: 273px;}
+.error_page h2 {padding-top: 35px; color: #f04e37; font-size: 24px; width: 250px; line-height: 1.2em;}
+
+#page .detail_area .faktura {font-size: 11px; margin-top: 10px;}
+#page .detail_area .faktura td, #page .detail_area .faktura th {vertical-align: top; text-align: left; padding-left: 5px;}
+#page .detail_area .faktura td {border: 1px solid #DCDDDE;}
+#page .detail_area .faktura th {font-size: 11px; vertical-align: bottom; border: 1px solid #DCDDDE; border-bottom: 2px solid #DCDDDE;}
+#page .detail_area .search_form {height: 35px;}
+#page .detail_area .search_form em {display: block; float: left; line-height: 33px; padding-right: 10px;}
+#page .detail_area .search_form .input_text {height: 21px; padding: 5px; color: #535454; font-size: 14px; border: 1px solid #b8b9ba; float: left; margin-right: 5px;}
+#page .detail_area .search_form .input_submit {height: 33px; border: 1px solid #f04e37; padding: 0 15px; color: #fff; font-size: 14px; font-weight: bold; background: url(/inet-sales-web/javax.faces.resource/images/allpages/sprite.png.xhtml) repeat-x 0 -860px;}
+
+@media print
+{
+	#footer, #header .slogan, #header .t_a, .s_line, .a270, .sub_boxes, .tools, #header .m_area, .top_anchor, .nakup .n_btn, .nakup .progress, .nakup .n_links {display: none;}
+	a {color: #000 !important;}
+	#header {height: 120px;}
+	.a682 {float: none; width: 100%; padding: 0;}
+	.detail_area {padding: 15px 0;}
+}
+
+.place-box, .select-box, .selected-box { position: absolute; }
+.selected-box { background-color: green; opacity: .50; -moz-opacity: 0.50; filter:alpha(opacity=50); }
+
+.news_notes { border: 2px solid; margin: 0 0 10px 0px; padding: 15px 10px 15px 50px; background-repeat: no-repeat; background-position: 10px center; color: #205791; border-color:#92cae4; background-color: #d5edf8; background-image: url(/inet-sales-web/javax.faces.resource/images/allpages/KnobInfo.png.xhtml); -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px; }
+.news_notes a { text-decoration: underline; }

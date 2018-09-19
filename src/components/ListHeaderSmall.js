@@ -12,15 +12,7 @@ import {
   sortByVotesMax
 }
   from '../actions/posts'
-
-// const CategoryButton = (props) => {
-//   return (
-//     <Link to={`/${props.categoryPath}`} className="link">
-//       <Button>{props.name}</Button>
-//     </Link>
-//   )
-// }
-
+  
 class ListHeaderSmall extends Component {
   state = {
     anchorEl: null,

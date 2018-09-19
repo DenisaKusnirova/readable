@@ -1,0 +1,879 @@
+﻿$(function () {
+	//zinicializuj placeholders
+	initPlaceholders();	
+	
+    // This adds 'placeholder' to the items listed in the jQuery .support object. 
+    jQuery.support.placeholder = false;
+    test = document.createElement('input');
+    if ('placeholder' in test) jQuery.support.placeholder = true;
+    placeholderSupport();
+
+    /* floutovanie tooltipu pri mensom nez 1600 rozl. */
+    $(".tmp-help-tooltip-icon").hover(
+        function () {
+            var tooltipWidth = $('.tmp-tooltip-wrap-contents').width(),
+                windowWidth = $(window).width();
+
+           if (windowWidth < 1600) {
+               $('body').find('.tmp-tooltip-wrap-contents').last().addClass('tooltip-left');
+            }
+        }
+    );
+    /* nth-child() */
+//    $('.tmp-switch-travel li.active').children().css('color', 'white');
+//    $('.tmp-switch-travel li:last-child').css({ "margin-right": "0px", "width": "156px", });
+    $(".tmp-infopanel").find("a:nth-child(2)").css("margin-left", "10px");
+    $(".tmp-connection-detail table tr:nth-child(2n+1) td").css("border-top", "1px solid #ddd");
+    $(".tmp-availability-connections tbody tr:last-child td").css("border", "none");
+    $(".tmp-select-connections tbody td:last-child").css("padding-right", "10px");
+    $(".tmp-shopping-ticket-reservation .tmp-all-connections tbody td:last-child").css("text-align", "right");
+    $(".tmp-shopping-payer-login:last-child").css("border", "none");
+    $(".tmp-registration-personal-info-card").parent().css("padding-bottom", "0px");
+    $(".tmp-content-table-ticket thead tr th:nth-child(2)").css({ "width": "170px", "text-align": "left", 'padding-left': '10px' });
+    $(".tmp-content-table-ticket thead tr th:last-child").css({ "width": "80px"});
+    //$(".tmp-shopping-payer-login:last-child").css("padding-bottom", "0px");
+    /* pretty dropdowns */
+    $(".tmp-drl-passenger-type, .tmp-drl").fancySelect();
+    $(".tooltip-wrapp span:nth-child(2)").css("background-color", "#2e70fc");
+    $(".tooltip-wrapp span:nth-child(3)").css("background-color", "#ff5309");
+    $(".tooltip-wrapp span:nth-child(4)").css("background-color", "#86133e");
+    $(".tooltip-wrapp span:nth-child(5)").css("background-color", "#999999");
+
+    searchParamResCar();
+
+         
+
+        
+    
+    /* show travel details */
+    $(".tmp-show-detail").click(function (event) {
+        event.preventDefault();
+        var $div = $(this).next();
+        $(this).addClass("tmp-hide-detail");
+        $(this).removeClass("tmp-show-detail");
+        if ($(this).hasClass("isDown")) {
+            $div.animate({ height: "0", padding: "0" }, 200);
+            $div.css("display", "none");
+            $(this).removeClass("isDown");
+            $(this).removeClass("tmp-hide-detail");
+            $(this).addClass("tmp-show-detail");
+            $(this).text("Zoznam spojov");
+        } else {
+            $div.animate({ height: determineActualHeight($div), padding: "10px" }, 500);
+            $div.css("display", "block");
+            $(this).addClass("isDown");
+            $(this).text("Zavrieť zoznam spojov");
+        }
+        return false;
+    });
+    $(".tmp-close-list").click(function () {
+        $(".tmp-train-list").animate({ height: "0", padding: "0" }, 200);
+        $(".tmp-train-list").css("display", "none");
+        $(".tmp-hide-detail").removeClass("isDown");
+        $(".tmp-hide-detail").addClass("tmp-show-detail");
+        $(".tmp-hide-detail").text("Zoznam spojov");
+        $(".tmp-hide-detail").removeClass("tmp-hide-detail");
+    });
+
+    /* close info panels */
+    $(".tmp-connection-infos .tmp-close-info").click(function () {
+        $(this).parent().addClass("tmp-not-available");
+        var infoParam = $(this).parent().data("info");
+        $(this).parent().parent().parent().prev().prev().children(".tmp-info-btns").children().removeClass("tmp-isActive");
+    });
+
+    /* add destination-via */
+    $(".tmp-add-via").click(function (e) {
+        e.preventDefault();
+        $(".tmp-via").show();
+    });
+    $(".tmp-cancel-via").click(function (e) {
+        $(".tmp-via input").val("");
+        $(".tmp-via").hide();
+    });
+
+    /*Modul BID - skryvanie a odkryvanie */
+  /*  $(".tmp-destination-ticket-zonovy").css("display", "none");*/
+
+    $("#tmp-drl-passengertype").change(function () {
+        var dropdownZonovy = $("#tmp-drl-passengertype option:selected").text();
+        if (dropdownZonovy == "Zónový") {
+            $(".tmp-destination-ticket-zonovy").css("display", "block");
+        }
+        if (dropdownZonovy == "Sieťový") {
+            $(".tmp-destination-ticket-zonovy").css("display", "none");
+        }
+
+    });
+
+
+    /* depart / arrive */
+    $("#tmp-arrive-block").hide();
+    $("#tmp-btn-depart").click(function (e) {
+        e.preventDefault();
+        if ($(this).hasClass("tmp-btn-active")) {
+            e.preventDefault();
+        }
+        else {
+            $(this).removeClass("tmp-btn-basic");
+            $(this).addClass("tmp-btn-active");
+            $("#tmp-btn-arrive").addClass("tmp-btn-basic");
+            $("#tmp-btn-arrive").removeClass("tmp-btn-active");
+            $("#searchParamForm\\:departHidden").val("true");
+      
+        }
+    });
+    $("#tmp-btn-arrive").click(function (e) {
+        e.preventDefault();
+        if ($(this).hasClass("tmp-btn-active")) {
+            e.preventDefault();
+        }
+        else {
+            $(this).removeClass("tmp-btn-basic");
+            $(this).addClass("tmp-btn-active");
+            $("#tmp-btn-depart").addClass("tmp-btn-basic");
+            $("#tmp-btn-depart").removeClass("tmp-btn-active");
+            $("#searchParamForm\\:departHidden").val("false");
+           
+        }
+    });
+    
+    
+    
+    /* datetimepicker and default date-time */
+
+    //datum od-do, dni od-do
+	var $date_field = $(".tmp-date.dateFrom");
+    var $dateTo_field = $(".tmp-date.dateTo");
+    var $day_field = $(".tmp-day.dateFrom");
+    var $dayTo_field = $(".tmp-day.dateTo");  
+    var $time_field = $(".tmp-time");    
+
+    /* NAVRHUJEM vymazat (minimalne datumy musia byt tahane z beanu)!!!
+    var $date_field = $(".tmp-date"),
+        $dateTo_field = $(".tmp-date-to"),
+        $time_field = $(".tmp-time"),
+        $day_field = $(".tmp-day"),
+        $dayTo_field = $(".tmp-day-to");
+    var $currentDateTime = new Date();
+    var day = getWeekDay($currentDateTime);
+    $date_field.val($currentDateTime.getDate() + ". " + ($currentDateTime.getMonth() + 1) + ". " + $currentDateTime.getFullYear());
+    $time_field.val($currentDateTime.getHours() + ":" + ($currentDateTime.getMinutes() < 10 ? '0' : '') + $currentDateTime.getMinutes());
+    $day_field.text(day);
+    
+
+    var $thisDay = new Date();
+    var $nextDay = new Date($thisDay.setDate($thisDay.getDate() + 1));
+    var dayTo = getWeekDay($nextDay);
+    $dateTo_field.val(($currentDateTime.getDate() + 1) + ". " + ($currentDateTime.getMonth() + 1) + ". " + $currentDateTime.getFullYear());
+    $dayTo_field.text(dayTo);
+    */
+     
+        //datetimepicker pre initSearchPrice
+    var htmlElement = document.querySelector("html");
+    var langAttr = $(htmlElement).attr("lang"); 
+    if(langAttr==''){
+    	langAttr = 'sk';
+    }
+    
+        $('#tmp-datetimepickerPrice').datetimepicker({
+            format: 'D, d.m.Y H:i',
+            dayOfWeekStart: 1,
+            lang: langAttr,
+            closeOnDateSelect: true,
+            onSelectDate: function (date, $input) {
+
+            	//aktualny datum
+            	var today = new Date();
+
+            	//resetneme hodiny
+            	date.setHours(0,0,0,0);
+            	today.setHours(0,0,0,0);
+            	
+            	//nedovoli nastavit historiu, neberieme do uvahy cas, lebo si ho nastavuje dtp
+            	if(date>=today) {
+            		var selectedDay = getWeekDay(date);
+	                $date_field.val(date.dateFormat('d.m.Y'));
+	                $day_field.text(selectedDay);
+	                initDatePrice(); //inicializacia kvoli initSearchPrice nastaveniu rozsahu
+            	}
+            }
+        });
+
+        //datetimepicker pre initSearch a searchParam
+        $('#tmp-datetimepicker').datetimepicker({
+            format: 'D, d.m.Y H:i',
+            dayOfWeekStart: 1,
+            lang: langAttr,
+            closeOnDateSelect: true,
+            onSelectDate: function (date, $input) {
+                var selectedDay = getWeekDay(date);
+                $('.tmp-date').val(date.dateFormat('D, d.m.Y'));
+                $day_field.text(selectedDay);
+                initDatex(); //inicializacia initSearch
+            },
+            onSelectTime: function (time, $input) {
+                $time_field.val(time.dateFormat('H:i'));
+            }
+        });
+        
+        // ?? [odstranit] best price datepicker 
+        $("#tmp-bestPriceDatepicker").datetimepicker({
+            timepicker: false,
+            format: 'D, d.m.Y',
+            dayOfWeekStart: 1,
+            lang: langAttr,
+            closeOnDateSelect: true,
+            onSelectDate: function (date, $input) {
+                var selectedDay = getWeekDay(date);
+                $date_field.val(date.dateFormat('d.m.Y'));
+                $day_field.text(selectedDay);
+                var d = new Date(date);
+                var dateTo = new Date(d.setDate(d.getDate() + 1));
+                $dateTo_field.val(dateTo.dateFormat('d.m.Y'));
+                var selectedDayTo = getWeekDay(dateTo);
+                $dayTo_field.text(selectedDayTo);
+            }
+        });
+
+    //on the subpage
+    //$(".tmp-txt-datepicker").val($currentDateTime.getDate() + ". " + ($currentDateTime.getMonth() + 1) + ". " + $currentDateTime.getFullYear());
+    $("#tmp-datepicker").datetimepicker({
+        timepicker: false,
+        format: 'D, d.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-txt-datepicker").val(selectedDay + ", " + date.dateFormat('d.m.Y'));
+            if ( $("#ticketParam\\:tripDate").length ) { $("#ticketParam\\:tripDate").click(); }
+        }
+    });
+
+    //motorail obsluha datumovnika - tam
+    $("#tmp-datetimepicker-to-a").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day").text(selectedDay);
+            $(".tmp-day-to").text(selectedDay);            
+            $(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);
+            
+            if(dateObjBack <= dateObjTo){
+            	var incrementedDate = new Date(date.getFullYear(),date.getMonth(),date.getDate()+1);  
+            	var incrementedDay = getWeekDay(incrementedDate);
+            	            	
+            	$(".tmp-day-back").text(incrementedDay);
+            	$(".tmp-txt-back").val(incrementedDate.dateFormat('d.m.Y'));
+            }
+        }
+    });
+
+    //motorail obsluha datumovnika - tam
+    $("#tmp-datetimepicker-to-b").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day").text(selectedDay);
+            $(".tmp-day-to").text(selectedDay);            
+            $(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);
+            
+            if(dateObjBack <= dateObjTo){
+            	var incrementedDate = new Date(date.getFullYear(),date.getMonth(),date.getDate()+1);  
+            	var incrementedDay = getWeekDay(incrementedDate);
+            	            	
+            	$(".tmp-day-back").text(incrementedDay);
+            	$(".tmp-txt-back").val(incrementedDate.dateFormat('d.m.Y'));
+            }
+        }
+    });
+    
+    //motorail obsluha datumovnika - spat
+    $("#tmp-datetimepicker-back").datetimepicker({
+        timepicker: false,
+        format: 'd.m.Y',
+        dayOfWeekStart: 1,
+        lang: langAttr,
+        closeOnDateSelect: true,
+        onSelectDate: function (date, $input) {
+            var selectedDay = getWeekDay(date);
+            $(".tmp-day-back").text(selectedDay);
+            $(".tmp-txt-back").val(date.dateFormat('d.m.Y'));
+            
+            var arrTo = $(".tmp-txt-to").val().split(".");
+            var dateObjTo = new Date(arrTo[2], (arrTo[1]-1), arrTo[0]);
+            var arrBack = $(".tmp-txt-back").val().split(".");
+            var dateObjBack = new Date(arrBack[2], (arrBack[1]-1), arrBack[0]);            
+            
+            if(dateObjBack < dateObjTo){
+            	$(".tmp-day-to").text(selectedDay);
+            	$(".tmp-txt-to").val(date.dateFormat('d.m.Y'));
+            }
+        }
+    });
+    
+    /*Vyrolovanie registrácie pre bezpl. prepravu*/
+    $("#free-transport-accept").change(function () {
+        if (this.checked) {
+            $('#registration-free-transport').slideDown("slow");
+        }
+
+        else {
+            $('#registration-free-transport').slideUp("slow");
+        }
+    });
+
+    
+});
+
+
+// if you can determine the div's height without this, it would be faster
+// what makes this expensive is inserting and removing an element from the dom
+// of course, you aren't doing this a thousand times a second, so it's probably no biggie
+function determineActualHeight($div) {
+    var $clone = $div.clone().hide().css('height', 'auto').appendTo($div.parent()),
+        height = $clone.height();
+    $clone.remove();
+    return height;
+}
+
+function placeholderSupport() {
+    // This adds placeholder support to browsers that wouldn't otherwise support it. 
+    if (!$.support.placeholder) {
+        var active = document.activeElement;
+        $(':text').focus(function () {
+            if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
+                $(this).val('').removeClass('hasPlaceholder');
+            }
+        }).blur(function () {
+            if ($(this).attr('placeholder') != '' && ($(this).val() == '' || $(this).val() == $(this).attr('placeholder'))) {
+                $(this).val($(this).attr('placeholder')).addClass('hasPlaceholder');
+            }
+        });
+        $(':text').blur();
+        $(active).focus();
+        $('form:eq(0)').submit(function () {
+            $(':text.hasPlaceholder').val('');
+        });
+    }
+}
+
+function increaseDate(param, el) {
+    var pom = jQuery(param).attr("value");
+    var pole = pom.split('.');
+    sdate = new Date(parseInt(pole[2]), parseInt(pole[1]) - 1, parseInt(pole[0]));
+    sdate.setDate(sdate.getDate() + 1);
+    var den = getWeekDay(sdate);
+    var result = sdate.getDate() + '. ' + parseInt(sdate.getMonth() + 1) + '. ' + sdate.getFullYear();
+    jQuery(param).val(result);
+    if ($(el).length > 0) {
+        $(el).parent().prev().text(den);
+    }
+    else {
+        $(".tmp-day").text(den);
+    }
+}
+
+function decreaseDate(param, el) {
+    var pom = jQuery(param).attr("value");
+    var pole = pom.split('.');
+    sdate = new Date(parseInt(pole[2]), parseInt(pole[1]) - 1, parseInt(pole[0]));
+    sdate.setDate(sdate.getDate() - 1);
+    var den = getWeekDay(sdate);
+    var result = sdate.getDate() + '. ' + parseInt(sdate.getMonth() + 1) + '. ' + sdate.getFullYear();
+    jQuery(param).val(result);
+    if ($(el).length > 0) {
+        $(el).parent().prev().text(den);
+    }
+    else {
+        $(".tmp-day").text(den);
+    }
+}
+
+function increaseTime(param) {
+    var pom = jQuery(param).attr("value");
+    var pole = pom.split(':');
+    if ((pole[0] >= 23 && pole[1] >= 30) || (pole[0] == 24)) {
+        result = "0:00";
+    }
+    else if (pole[1] >= 30) {
+        result = (parseInt(pole[0]) + 1).toString() + ':00';
+    }
+    else {
+        result = (pole[0]) + ':30';
+    }
+    jQuery(param).val(result);
+}
+
+function decreaseTime(param) {
+    var pom = jQuery(param).attr("value");
+    var pole = pom.split(':');
+    if (pole[0] <= 0 && pole[1] < 30) {
+        result = "0:00";
+    }
+    else if (pole[1] <= 30 && pole[1] > 0) {
+        result = (pole[0]) + ':00';
+    }
+    else {
+        result = (parseInt(pole[0]) - 1).toString() + ':30';
+    }
+    jQuery(param).val(result);
+}
+
+function ShowExtOptions(item) {
+    if (jQuery(item).hasClass('tmp-ext_close')) {
+        jQuery('#tmp-ext_block').slideDown("slow");
+        jQuery(item).removeClass('tmp-ext_close').addClass('tmp-ext_open');
+    }
+    else if (jQuery(item).hasClass('tmp-ext_open')) {
+        jQuery('#tmp-ext_block').slideUp("slow");
+        jQuery(item).removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function ShowExtObl(item) {
+    if (jQuery(item).hasClass('tmp-ext_close')) {
+        jQuery('#tmp-ext-obl_block').slideDown("slow");
+        jQuery(item).removeClass('tmp-ext_close').addClass('tmp-ext_open');
+    }
+    else if (jQuery(item).hasClass('tmp-ext_open')) {
+        jQuery('#tmp-ext-obl_block').slideUp("slow");
+        jQuery(item).removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function ShowExtOblCest(item, container) {
+    if (jQuery(item).hasClass('tmp-ext_close')) {
+        jQuery(container).slideDown("slow");
+        jQuery(item).removeClass('tmp-ext_close').addClass('tmp-ext_open');
+    }
+    else if (jQuery(item).hasClass('tmp-ext_open')) {
+        jQuery(container).slideUp("slow");
+        jQuery(item).removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function HideExtOblCest(item) {
+    if (jQuery(item).prev().hasClass('tmp-ext_open')) {
+    jQuery(item).slideUp("slow");
+      jQuery(item).prev().removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function CloseExtOblCest(item) {
+    if (jQuery(item).prev().hasClass('tmp-ext_open')) {
+    jQuery(item).hide();
+      jQuery(item).prev().removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function ShowBuyBtns(item) {
+    if (jQuery(item).hasClass('tmp-ext_close')) {
+        jQuery(item).next().slideDown("slow");
+        jQuery(item).addClass('tmp-clicked');
+        jQuery(item).removeClass('tmp-ext_close').addClass('tmp-ext_open');
+    }
+    else if (jQuery(item).hasClass('tmp-ext_open')) {
+        jQuery(item).next().slideUp("slow");
+        jQuery(item).removeClass('tmp-clicked');
+        jQuery(item).removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    }
+}
+
+function ShowDetails(param, el) {
+    if (jQuery(el).hasClass("tmp-isActive")) {
+        jQuery(el).removeClass("tmp-isActive");
+        jQuery(el).parent().parent().next().next().children().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+    else {
+        jQuery(el).parent().children().each(function () {            
+        	$(this).removeClass("tmp-isActive");
+        });
+        jQuery(el).addClass("tmp-isActive");
+
+        jQuery(el).parent().parent().next().next().children().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).removeClass("tmp-not-available");
+            }
+            else {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+}
+
+function ShowGroupPass(param, el) {
+    if (jQuery(el).hasClass("tmp-isActive")) {
+        jQuery(el).removeClass("tmp-isActive");
+        jQuery(el).parent().parent().parent().parent().next().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+    else {
+        jQuery(el).parent().children().each(function () {
+            $(this).removeClass("tmp-isActive");
+        });
+        jQuery(el).addClass("tmp-isActive");
+        jQuery(el).parent().parent().parent().parent().next().find(".tmp-connection-infos").each(function () {
+            if (jQuery(this).data("info") == param) {
+                jQuery(this).removeClass("tmp-not-available");
+            }
+            else {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+}
+
+function ShowWagonType(el) {
+    if (jQuery(el).hasClass('tmp-btn-basic')) {
+        jQuery(el).parent().parent().next().show();
+        jQuery(el).text("Zrušiť rezerváciu");
+        jQuery(el).removeClass('tmp-btn-basic').addClass('tmp-btn-active');
+    }
+    else if (jQuery(el).hasClass('tmp-btn-active')) {
+        jQuery(el).parent().parent().next().hide();
+        jQuery(el).text("Pridať rezerváciu");
+        jQuery(el).removeClass('tmp-btn-active').addClass('tmp-btn-basic');
+    }
+}
+
+function WagonType(param, el) {
+    if (jQuery(el).hasClass("tmp-btn-active")) {
+        return false;
+    }
+    else {
+        jQuery(el).parent().children().each(function () {
+            jQuery(this).removeClass("tmp-btn-active");
+            jQuery(this).addClass("tmp-btn-basic");
+        });
+        jQuery(el).removeClass("tmp-btn-basic");
+        jQuery(el).addClass("tmp-btn-active");
+        jQuery(el).parent().parent().children(".tmp-wagon-type").each(function () {
+            if (jQuery(this).data("type") == param) {
+                jQuery(this).removeClass("tmp-not-available");
+            }
+            else {
+                jQuery(this).addClass("tmp-not-available");
+            }
+        });
+    }
+}
+
+/*Plnenie inputov z popupu Oblubene*/
+$(function () {
+	
+    $(document).on('click', '.tmp-favorite-table tr', function (e) {
+        e.preventDefault();
+        $('#tmp-ext-obl_block').css("display", "none");
+        jQuery('.tmp-favorite').removeClass('tmp-ext_open').addClass('tmp-ext_close');
+    });
+    
+	/*
+    $(document).on('click', '.tmp-favorite-cest-table tr', function (e) {
+        e.preventDefault();
+        $('#bckName').val($(this).find('td:first-child').text());
+        $('#bckLastName').val($(this).find('td:last-child').text());
+        $('#tmp-ext-obl-cest_block').css("display", "none");
+    });
+	 */
+    
+    $(document).on('mousemove', function (e) {
+      $('#ajaxProgressImage').css({
+        left : e.pageX + 17,
+        top : e.clientY
+      });     
+    });
+
+});
+
+/*odstranenie error hlaskz po kliknuti na input*/
+function myFunction(x) {
+    var tato = $(this).find(".tmp-required-error-r");
+
+    $(".tmp-error-message, .tmp-error-message-row").css("display", "none");
+    //$("body").find("input").removeClass("tmp-input-error");
+    //$("body").find("label").removeClass("tmp-label-error");
+}
+
+//$(function () {
+
+//    $("#type-passClass").changeValid(function () {
+//        var valid = $("#type-passClass option:selected").text();
+
+//       if (valid == "Vyberte typ preukazu") {
+
+//           $(".trigger").css("border", "1px solid black");
+//       }
+
+//       if (valid == "preukaz 1") {
+
+//           $(".trigger").css("border", "1px solid red");
+//       }
+
+//    });
+
+
+//});
+
+
+//$(".tmp-destination-ticket-zonovy").css("display", "none");
+
+//$("#tmp-drl-passengertype").change(function () {
+//    var dropdownZonovy = $("#tmp-drl-passengertype option:selected").text();
+//    if (dropdownZonovy == "Zónový") {
+//        $(".tmp-destination-ticket-zonovy").css("display", "block");
+//    }
+//    if (dropdownZonovy == "Sieťový") {
+//        $(".tmp-destination-ticket-zonovy").css("display", "none");
+//    }
+
+//});
+
+$(function () {
+    $(".clickbtn").hover(
+        function () {
+            $(this).addClass('red').prev().css("display", "block").parent().addClass('tooltip-wraper');
+        }, function () {
+            $(this).removeClass("red").prev().css("display", "none");
+        }
+    );
+
+    /*Tooltip pre prihlasenie*/
+    $(".clickbtn-account").hover(
+       function () {
+           $(this).addClass('active').parent().find('.tmp-tooltip-account-contents').css("display", "block");
+       }, function () {
+           $(this).removeClass("active").parent().find('.tmp-tooltip-account-contents').css("display", "none");
+       });
+});
+
+
+/* inicializacia dni vo vstupnom paneli podla dat z beanu */
+function initMotoRailFrontend () {
+	//tam
+	var to = $(".tmp-txt-to").val().split(".");
+	var dateTo = new Date(to[2],to[1]-1,to[0]);
+	$("#day-a, #day-b").text(getWeekDay(dateTo));
+
+	//spat
+	if ( $(".tmp-txt-back").val() ) {
+		var back = $(".tmp-txt-back").val().split(".");
+		var dateFrom = new Date(back[2],back[1]-1,back[0]);
+		$("#day-c").text(getWeekDay(dateFrom));
+	}
+}
+
+function searchParamResCar() {
+
+    $('.tmp-switch-travel li.active').children().css('color', 'white');
+    $('.tmp-switch-travel li:last-child').css({ "margin-right": "0px", "width": "156px", });
+    
+    /*switch-travel-onload-apendTo*/
+    $('.tmp-switch-travel li').each(function () {
+    	var switchTravelActive = $(this).hasClass('active');
+    	if ( switchTravelActive == true ) { 
+    	    if ( $(this).attr('id') == 'one-way' ) { oneWayScreen(); }
+    	    if ( $(this).attr('id') == 'back' ) {
+        		if ($('#searchParamResCarForm\\:property-vehicle').prop('checked') ) {
+        			backOnlyScreen();
+        		} else {
+        			backScreen();
+        		}
+    	    }
+    	    if ( $(this).attr('id') == 'back-domestic' ) { backOnlyScreen(); }
+    	}
+    });
+    
+    
+    /*switch-travel-click*/
+    $('.tmp-switch-travel li').click(function () {
+
+    	if ($(this).hasClass('active') == false) {
+    	
+    		$(this).addClass('active').children().css('color', 'white');
+    		$(this).addClass('select');
+    		
+        	if ($(this).attr('id') == 'one-way') { oneWayScreen(); }
+        	if ($(this).attr('id') == 'back') { backScreen(); }
+        	if ($(this).attr('id') == 'back-domestic') { backOnlyScreen(); }
+
+        
+        }
+    	
+       $('.tcd-validation .tmp-anulation-form-alert-error').css('display', 'none');
+       //$('.tcd-validation .tmp-anulation-form-alert-info').css('display', 'none');
+       
+       return false;
+      
+    });
+
+    
+	$('#searchParamResCarForm').submit(function() {
+	    $('#searchParamResCarForm\\:destinationFrom').removeAttr('disabled');
+	    $('#searchParamResCarForm\\:destinationTo').removeAttr('disabled');
+	});
+
+
+    $('#searchParamResCarForm\\:property-vehicle').change(function () {
+
+        if (this.checked) {
+        	$('.tmp-tcd-number').parent().show();
+            //$('.tmp-tcd-number').parent().slideDown("slow");
+            $('.tmp-journey-datetime .tmp-l-block .tmp-clr:first-child').css('display', 'none');
+            $('.tmp-journey-datetime .tmp-l-block .tmp-clr:nth-child(2)').css('margin-top', '0px');
+
+            $('.tmp-journey-datetime .tmp-l-block .tmp-travel-to-data').css('display', 'block');
+            
+            $('.tcd-validation .tmp-anulation-form-alert-error').css('display', 'block');
+            //$('.tcd-validation .tmp-anulation-form-alert-info').css('display', 'block');
+            
+            // zakazem zmenu stanic odkial / kam
+            $('#searchParamResCarForm\\:destinationFrom').trigger('disable');
+            $('#searchParamResCarForm\\:destinationTo').trigger('disable'); 
+
+            // nastavim button na vyhladanie smeru spat
+            $('#searchBoth').css('display', 'none');
+            $('#searchReturnOnly').css('display', 'block');
+
+        } else {
+
+        	$('.tmp-tcd-number').parent().hide();
+            //$('.tmp-tcd-number').parent().slideUp("fast");
+            $('.tmp-journey-datetime .tmp-l-block .tmp-clr:first-child').css('display', 'block');
+            $('.tmp-journey-datetime .tmp-l-block .tmp-clr:nth-child(2)').css('margin-top', '2px');
+            $('.tmp-journey-datetime .tmp-l-block .tmp-travel-to-data').css('display', 'none');
+            
+            $('.tcd-validation .tmp-anulation-form-alert-error').css('display', 'none');
+            //$('.tcd-validation .tmp-anulation-form-alert-info').css('display', 'none');
+            
+            // povolim zmenu stanic odkial / kam
+            $('#searchParamResCarForm\\:destinationFrom').trigger('enable');
+            $('#searchParamResCarForm\\:destinationTo').trigger('enable');    
+            
+            // nastavim button na vyhladanie oboch smerov
+            $('#searchBoth').css('display', 'block');
+            $('#searchReturnOnly').css('display', 'none');
+
+        	if ($("li[id='back-domestic']").length > 0 ) {
+        		$("#one-way").click();
+            }
+
+        }
+    });
+}
+
+
+function oneWayScreen() {
+	
+	$("li[id^='back']").removeClass('active').children().css('color', '#6b6b6b');
+	$("li[id^='back']").removeClass('select');
+
+	$('.tmp-chkb-vehicle').css('display','none');
+  	$("#searchParamResCarForm\\:property-vehicle").prop('checked',false);
+
+  	$('#tmp-travel-to-back').removeClass('visible-switch');
+  	$('#tmp-travel-one-way').addClass('visible-switch');
+
+  	$("#searchParamResCarForm\\:connectionTypeHidden").val("false");
+
+    $('.tmp-journey-datetime .tmp-l-block .tmp-clr:first-child').css('display', 'block');
+    $('.tmp-journey-datetime .tmp-l-block .tmp-clr:nth-child(2)').css('margin-top', '2px');
+    $('.tmp-journey-datetime .tmp-l-block .tmp-travel-to-data').css('display', 'none');
+  	
+    // povolim zmenu stanic odkial / kam
+    $('#searchParamResCarForm\\:destinationFrom').trigger('enable');
+    $('#searchParamResCarForm\\:destinationTo').trigger('enable');    
+    
+    // nastavim button na vyhladanie oboch smerov
+    $('#searchBoth').css('display', 'block');
+    $('#searchReturnOnly').css('display', 'none');
+}
+
+
+function backScreen() {	
+	$("li[id='one-way']").removeClass('active').children().css('color', '#6b6b6b');
+	$("li[id='one-way']").removeClass('select');
+	
+	$('.tmp-chkb-vehicle').appendTo('.tmp-search-panel1 .tmp-destination');
+    $('.tmp-chkb-vehicle').css('display', 'block');
+    
+    $('#tmp-travel-one-way').removeClass('visible-switch');
+    $('#tmp-travel-to-back').addClass('visible-switch');
+    
+    $("#searchParamResCarForm\\:connectionTypeHidden").val("true");
+
+    //pri prepnuti odznacenie checkboxu mam doklad pre cestu
+	$('#searchParamResCarForm\\:property-vehicle').prop('checked', false);
+	$(".tmp-chkb-vehicle label").removeClass("tmp-chk");
+	$(".tmp-chkb-vehicle label").addClass("tmp-clr");
+	$('.tmp-tcd-number').parent().hide();
+	//$('.tmp-tcd-number').parent().slideUp("fast");
+	$('.tmp-journey-datetime .tmp-l-block .tmp-clr:first-child').css('display', 'block');
+	$('.tmp-journey-datetime .tmp-l-block .tmp-travel-to-data').css('display', 'none');
+
+	// povolim zmenu stanic odkial / kam
+	$('#searchParamResCarForm\\:destinationFrom').trigger('enable');
+	$('#searchParamResCarForm\\:destinationTo').trigger('enable');
+
+	// nastavim button na vyhladanie oboch smerov
+	$('#searchBoth').css('display', 'block');
+	$('#searchReturnOnly').css('display', 'none');
+}
+
+
+function backOnlyScreen() {
+	$("li[id='one-way']").removeClass('active').children().css('color', '#6b6b6b');
+	$("li[id='one-way']").removeClass('select');
+	
+	$('.tmp-chkb-vehicle').appendTo('.tmp-search-panel1 .tmp-destination');
+    $('.tmp-chkb-vehicle').css('display', 'block');
+    
+    $('#tmp-travel-one-way').removeClass('visible-switch');
+    $('#tmp-travel-to-back').addClass('visible-switch');
+    
+    $("#searchParamResCarForm\\:connectionTypeHidden").val("true");
+    
+    //pri prepnuti odznacenie checkboxu mam doklad pre cestu
+    $("#searchParamResCarForm\\:property-vehicle").prop('checked',true);
+	$('.tmp-tcd-number').parent().show();
+    
+    $('.tmp-journey-datetime .tmp-l-block .tmp-clr:first-child').css('display', 'none');
+    $('.tmp-journey-datetime .tmp-l-block .tmp-clr:nth-child(2)').css('margin-top', '0px');
+    $('.tmp-journey-datetime .tmp-l-block .tmp-travel-to-data').css('display', 'block');
+    
+    $('.tcd-validation .tmp-anulation-form-alert-error').css('display', 'block');
+    
+    // povolim zmenu stanic odkial / kam
+    $('#searchParamResCarForm\\:destinationFrom').trigger('disable');
+    $('#searchParamResCarForm\\:destinationTo').trigger('disable'); 
+
+	// nastavim button na vyhladanie oboch smerov
+	$('#searchBoth').css('display', 'none');
+	$('#searchReturnOnly').css('display', 'block');
+}

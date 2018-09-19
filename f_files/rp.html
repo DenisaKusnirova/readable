@@ -1,0 +1,47 @@
+
+<!-- saved from url=(0063)https://ikvc.slovakrail.sk/inet-sales-web/pages/login/rp.xhtml? -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">      
+        <script language="JavaScript" type="text/javascript">
+            //default
+            var stat = "unchanged";
+            var session_state = window.location.search.replace(/[^a-zA-Z0-9-_]/g, '');
+			var targetOrigin  = "https://ikvc.slovakrail.sk";
+			var mes = session_state;
+
+            function check_session() {	
+                var win = window.document.getElementById("op").contentWindow;                
+                win.postMessage( mes, targetOrigin);                
+            }
+
+            function setTimer()
+            {
+                check_session();
+                //3s interval
+                timerID = setInterval("check_session()",3*1000);
+            }
+
+            window.addEventListener("message", receiveMessage, false);
+
+            function receiveMessage(e) {
+                if (e.origin !== targetOrigin) {       
+                return;
+                }
+                stat = e.data;
+                noticeToParentWindow(stat);
+            }
+
+            function noticeToParentWindow(stat){
+            	//ak sa vrati changed ideme invalidovat session
+            	
+                if (stat == "changed") { 
+                    window.top.location.href = "https://ikvc.slovakrail.sk/inet-sales-web/pages/login/invalidate.xhtml";
+                }else if (stat == "noprompt"){
+                	 window.top.location.href = "https://ikvc.slovakrail.sk/inet-sales-web/pages/login/noprompt.xhtml";
+                }
+            }
+        </script>
+    </head>
+    <body onload="setTimer()">
+	<iframe sandbox="allow-scripts allow-same-origin" id="op" style="visibility:hidden;display:none" height="0" width="0" src="./op.html"></iframe>
+    
+</body></html>
